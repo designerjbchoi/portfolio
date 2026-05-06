@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- SEO 및 메타 데이터 -->
+    <title>JB Choi | UI/UX & Visual Designer</title>
+    <meta name="description"
+        content="Portfolio of JB Choi, a UI/UX and Visual Designer based in London. Multidisciplinary background spanning HCI, Creative Computing, Psychology, and Business Strategy.">
+    <meta name="keywords"
+        content="JB Choi, UI/UX Designer, Visual Designer, Portfolio, London, HCI, Creative Computing, Psychology, Business Strategy">
+    <meta name="author" content="JB Choi">
+
+    <!-- Open Graph (Facebook, LinkedIn 등) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.jbchoi.com/">
+    <meta property="og:title" content="JB Choi | UI/UX & Visual Designer">
+    <meta property="og:description" content="Portfolio of JB Choi, a UI/UX and Visual Designer based in London.">
+    <meta property="og:image" content="https://www.jbchoi.com/og-image.jpg">
+
+    <!-- Twitter Cards -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.jbchoi.com/">
+    <meta property="twitter:title" content="JB Choi | UI/UX & Visual Designer">
+    <meta property="twitter:description" content="Portfolio of JB Choi, a UI/UX and Visual Designer based in London.">
+    <meta property="twitter:image" content="https://www.jbchoi.com/twitter-image.jpg">
+
+    <!-- 스타일시트 연동 -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-left">
+            <p>Meet JB Choi, a UI/UX and Visual Designer based in London. With a multidisciplinary background spanning
+                Human-Computer Interaction, Creative Computing, Psychology, and Business Strategy, JB brings a unique
+                perspective</p>
+        </div>
+
+        <div class="header-center">
+            <a href="index.html" class="logo-link" aria-label="Home">
+                <!-- JB 모노그램 로고 SVG -->
+                <svg width="60" height="60" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+                    <!-- J 파트 (왼쪽, 약간 위로 꺾임) -->
+                    <path d="M 50 20 L 50 70 A 15 15 0 0 1 20 70" fill="none" stroke="#000" stroke-width="8"
+                        stroke-linecap="round" />
+                    <!-- B 파트 (오른쪽 둥근 두 부분) -->
+                    <path d="M 50 20 L 50 80" fill="none" stroke="#000" stroke-width="8" stroke-linecap="round" />
+                    <path d="M 50 20 C 75 20 75 50 50 50" fill="none" stroke="#000" stroke-width="8"
+                        stroke-linecap="round" />
+                    <path d="M 50 50 C 75 50 75 80 50 80" fill="none" stroke="#000" stroke-width="8"
+                        stroke-linecap="round" />
+                </svg>
+            </a>
+        </div>
+
+        <div class="header-right">
+            <nav class="main-nav">
+                <a href="#" class="nav-item">Home</a>
+                <a href="#" class="nav-item">Resume</a>
+                <a href="#" class="nav-item">LinkedIn</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- 포트폴리오 아이템들이 스크립트를 통해 여기에 추가됩니다 -->
+        <section class="portfolio-grid" id="portfolio-grid">
+        </section>
+    </main>
+
+    <!-- 스크립트 연동 -->
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

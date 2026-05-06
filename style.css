@@ -1,0 +1,154 @@
+/* 기본 리셋 및 폰트 설정 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    padding: 60px 80px;
+}
+
+/* 헤더 영역 */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 120px; /* 로고/네비게이션과 그리드 사이의 여백 */
+}
+
+/* 왼쪽 소개 텍스트 */
+.header-left {
+    flex: 1;
+    max-width: 380px;
+}
+
+.header-left p {
+    font-family: "Courier New", Courier, monospace; /* 타자기 느낌 폰트 */
+    font-size: 13px;
+    line-height: 1.6;
+    color: #000;
+}
+
+/* 중앙 로고 */
+.header-center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.logo-link {
+    display: block;
+}
+
+.logo-svg {
+    width: 60px;
+    height: 60px;
+}
+
+/* 오른쪽 네비게이션 메뉴 */
+.header-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.main-nav {
+    display: flex;
+    gap: 25px; /* 메뉴 사이 간격 */
+}
+
+.main-nav .nav-item {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 13px;
+    text-decoration: none;
+    color: #000;
+    transition: opacity 0.2s ease;
+}
+
+.main-nav .nav-item:hover {
+    opacity: 0.6;
+}
+
+/* 포트폴리오 그리드 레이아웃 */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3열 그리드 */
+    column-gap: 60px; /* 열 간격 */
+    row-gap: 80px;    /* 행 간격 */
+}
+
+/* 개별 포트폴리오 아이템 */
+.portfolio-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+
+/* 이미지 블럭 (회색 배경 플레이스홀더) */
+.image-block {
+    width: 100%;
+    aspect-ratio: 4 / 3; /* 모든 썸네일을 동일한 크기(비율)로 통일 */
+    background-color: #f0f0f0; /* 회색 블럭 기본 색상 */
+    margin-bottom: 20px;
+    /* 나중에 이미지가 들어갈 때 자연스럽게 보이도록 배경 설정 준비 */
+    background-size: cover;
+    background-position: center;
+    transition: background-color 0.3s ease;
+}
+
+/* 제목 텍스트 */
+.item-title {
+    font-size: 13px;
+    font-weight: 400;
+    text-align: center;
+    color: #000;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; /* 산세리프 폰트 */
+}
+
+/* 우측 하단 빨간색 뱃지 (PDF 아이콘 등) */
+.badge {
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    bottom: -4px; /* 타이틀 텍스트와 약간 정렬되도록 */
+    right: -10px; /* 컨테이너 바깥으로 살짝 튀어나오게 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 반응형 디자인 지원 */
+@media (max-width: 1024px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr); /* 중간 크기 화면에서는 2열 */
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 40px 20px;
+    }
+    
+    .header {
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+        margin-bottom: 80px;
+    }
+    
+    .header-left, .header-center, .header-right {
+        text-align: center;
+        justify-content: center;
+        max-width: 100%;
+    }
+    
+    .portfolio-grid {
+        grid-template-columns: 1fr; /* 모바일에서는 1열 */
+    }
+}
