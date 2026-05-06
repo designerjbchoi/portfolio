@@ -44,9 +44,10 @@ body {
     display: block;
 }
 
-.logo-svg {
+.logo-img {
     width: 60px;
     height: 60px;
+    object-fit: contain;
 }
 
 /* 오른쪽 네비게이션 메뉴 */
