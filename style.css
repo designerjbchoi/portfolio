@@ -9,15 +9,16 @@ body {
     background-color: #ffffff;
     color: #000000;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    padding: 60px 80px;
+    padding: 60px 64px; /* 기존 80px에서 20% 감소 */
 }
 
 /* 헤더 영역 */
 .header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 120px; /* 로고/네비게이션과 그리드 사이의 여백 */
+    align-items: flex-start; /* 맨 위 시작 포인트를 동일하게 맞춤 */
+    position: relative; /* 로고 절대 중앙 정렬을 위한 설정 */
+    margin-bottom: 72px; /* 기존 120px에서 총 40% 감소 (로고와 그리드 사이 여백) */
 }
 
 /* 왼쪽 소개 텍스트 */
@@ -31,11 +32,14 @@ body {
     font-size: 13px;
     line-height: 1.6;
     color: #000;
+    margin-top: 0; /* 단락의 기본 위쪽 여백을 제거하여 최상단에 밀착 */
 }
 
 /* 중앙 로고 */
 .header-center {
-    flex: 1;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     justify-content: center;
 }
@@ -45,8 +49,8 @@ body {
 }
 
 .logo-img {
-    width: 60px;
-    height: 60px;
+    width: 72px;
+    height: 72px;
     object-fit: contain;
 }
 
@@ -78,8 +82,7 @@ body {
 .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3열 그리드 */
-    column-gap: 60px; /* 열 간격 */
-    row-gap: 80px;    /* 행 간격 */
+    gap: 48px; /* 가로 세로 간격 동일하게 설정 */
 }
 
 /* 개별 포트폴리오 아이템 */
@@ -98,7 +101,8 @@ body {
     background-color: #f0f0f0; /* 회색 블럭 기본 색상 */
     margin-bottom: 20px;
     /* 나중에 이미지가 들어갈 때 자연스럽게 보이도록 배경 설정 준비 */
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
     background-position: center;
     transition: background-color 0.3s ease;
 }
@@ -122,6 +126,61 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+/* =========================================
+   프로젝트 상세 페이지 (Safey 등) 스타일
+   ========================================= */
+
+.project-meta {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #000;
+}
+
+.project-detail {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding-bottom: 100px;
+}
+
+.project-hero {
+    margin-bottom: 80px;
+}
+
+.hero-title {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 38px;
+    font-weight: bold;
+    line-height: 1.2;
+    margin-top: 40px;
+    letter-spacing: -0.5px;
+}
+
+.project-section {
+    margin-bottom: 100px;
+}
+
+.section-label {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+}
+
+/* 상세 페이지용 회색 블럭 공통 클래스 */
+.placeholder-block {
+    width: 100%;
+    background-color: #f0f0f0;
+    border-radius: 2px;
+}
+
+.other-projects-section {
+    margin-top: 150px;
+    padding-top: 80px;
+    border-top: 1px solid #eaeaea;
 }
 
 /* 반응형 디자인 지원 */
@@ -151,5 +210,9 @@ body {
     
     .portfolio-grid {
         grid-template-columns: 1fr; /* 모바일에서는 1열 */
+    }
+    
+    .hero-title {
+        font-size: 28px;
     }
 }

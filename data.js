@@ -5,74 +5,74 @@ const portfolioData = [
     {
         id: 1,
         title: 'Healthfirst',
-        image: '', // 나중에 이미지를 추가할 곳
-        ratio: '16/9' // 가로가 긴 이미지
+        image: 'image/thumbnail/Healthfirst.jpg',
+        ratio: '16/9'
     },
     {
         id: 2,
         title: 'Safey',
-        image: '',
+        image: 'image/thumbnail/Safey.gif',
         ratio: '16/9'
     },
     {
         id: 3,
-        title: 'Snow Joc',
-        image: '',
+        title: 'Snow Joe',
+        image: 'image/thumbnail/Snow Joe.gif',
         ratio: '16/9'
     },
     {
         id: 4,
         title: 'SitEat',
-        image: '',
-        ratio: '1/1' // 정사각형 이미지
+        image: 'image/thumbnail/SitEat.gif',
+        ratio: '1/1'
     },
     {
         id: 5,
         title: 'National Mustard Museum',
-        image: '',
+        image: 'image/thumbnail/National Mustard Museum.gif',
         ratio: '1/1'
     },
     {
         id: 6,
         title: 'Icons for PES',
-        image: '',
+        image: 'image/thumbnail/Icons for PES.gif',
         ratio: '3/2',
-        hasBadge: true // 우측 하단에 빨간 마크(PDF 아이콘)가 있는 항목
+        hasBadge: true
     },
     {
         id: 7,
         title: 'UBRI Connect by Ripple',
-        image: '',
+        image: 'image/thumbnail/UBRI Connect.png',
         ratio: '1/1'
     },
     {
         id: 8,
         title: 'Otl Aicher',
-        image: '',
-        ratio: '4/3' // 일반적인 사진 비율
+        image: 'image/thumbnail/Otl Aicher.gif',
+        ratio: '4/3'
     },
     {
         id: 9,
         title: 'Raging Bull',
-        image: '',
+        image: 'image/thumbnail/Raging Bull.jpg',
         ratio: '4/3'
     },
     {
         id: 10,
         title: 'Gates of Eden',
-        image: '',
-        ratio: '2/3' // 세로가 긴 이미지 (포스터)
+        image: 'image/thumbnail/Gates of Eden.gif',
+        ratio: '2/3'
     },
     {
         id: 11,
         title: 'Typography Zine',
-        image: '',
+        image: 'image/thumbnail/Typography Zine.jpg',
         ratio: '4/3'
     },
     {
         id: 12,
         title: 'Destiny',
-        image: '',
+        image: 'image/thumbnail/Destiny.gif',
         ratio: '1/1',
         hasBadge: true
     }
