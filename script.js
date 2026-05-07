@@ -7,11 +7,11 @@ document.addEventListener('DOMContentLoaded', () => {
         gridItem.className = 'portfolio-item';
         gridItem.style.textDecoration = 'none'; // 기본 밑줄 제거
         gridItem.style.color = 'inherit'; // 기본 색상 상속
-        
+
         // 현재 페이지가 projects 폴더 내부에 있는지 확인
         const isProjectPage = window.location.pathname.includes('/projects/');
         const basePath = isProjectPage ? '' : 'projects/';
-        
+
         // 제목을 기반으로 HTML 파일 이름 생성 (예: 'Snow Joc' -> 'snow_joc.html')
         const fileName = item.title.toLowerCase().replace(/[^a-z0-9]+/g, '_') + '.html';
         gridItem.href = basePath + fileName;
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const imageBasePath = isProjectPage ? '../' : '';
             imageBlock.style.backgroundImage = `url('${imageBasePath}${item.image}')`;
             imageBlock.style.backgroundColor = 'transparent'; // 회색 배경 제거
-            
+
             // 이미지가 짤리지 않고 총면적이 비슷해 보이도록 비율에 따라 크기 동적 조절
             const [w, h] = (item.ratio || '4/3').split('/').map(Number);
             const r = w / h;
@@ -48,10 +48,30 @@ document.addEventListener('DOMContentLoaded', () => {
                 gridItem.style.transform = 'translateX(1.075%)';
             }
 
-            // 특정 프로젝트(SitEat, National Mustard Museum) 15% 확대 적용 
-            // transform: scale()을 사용하면 지정 영역 바깥으로 커지면서 이미지가 잘리지 않음
-            if (item.title === 'SitEat' || item.title === 'National Mustard Museum') {
-                imageBlock.style.transform = 'scale(1.15)';
+            // 썸네일 특별 확대 적용 (짤림 방지를 위해 transform: scale 사용)
+            if (item.title === 'SitEat') {
+                imageBlock.style.transform = 'scale(1.15)'; // 기존 15% 유지
+            }
+            if (item.title === 'National Mustard Museum') {
+                imageBlock.style.transform = 'scale(1.20175)'; // 기존 1.265에서 5% 축소 (1.265 * 0.95)
+            }
+            if (item.title === 'Icons for PES') {
+                imageBlock.style.transform = 'scale(1.1)'; // 10% 확대 적용
+            }
+            if (item.title === 'UBRI Connect by Ripple') {
+                imageBlock.style.transform = 'scale(1.05)'; // 5% 확대 적용
+            }
+            if (item.title === 'Raging Bull') {
+                imageBlock.style.transform = 'scale(1.069425)'; // 기존 1.1025에서 3% 축소 (1.1025 * 0.97)
+            }
+            if (item.title === 'Otl Aicher') {
+                imageBlock.style.transform = 'scale(0.95)'; // 5% 축소 적용
+            }
+            if (item.title === 'Gates of Eden') {
+                imageBlock.style.transform = 'scale(1.5838875)'; // 기존 1.66725에서 5% 축소 (1.66725 * 0.95)
+            }
+            if (item.title === 'Destiny') {
+                imageBlock.style.transform = 'scale(1.2)'; // 20% 확대 적용
             }
         }
 
@@ -83,4 +103,21 @@ document.addEventListener('DOMContentLoaded', () => {
         // 최종 완성된 아이템을 그리드 컨테이너에 추가
         gridContainer.appendChild(gridItem);
     });
+
+    // 화면 우측 상단 메뉴(LinkedIn 등)의 오른쪽 끝을 3열에서 가장 우측으로 치우친 이미지(Icons for PES)의 우측 끝과 맞추기 위한 동적 정렬 함수
+    function alignMainNav() {
+        const gridCells = document.querySelectorAll('.portfolio-item');
+        const mainNav = document.querySelector('.main-nav');
+        if (gridCells.length >= 3 && mainNav) {
+            const cellWidth = gridCells[2].offsetWidth; // 3번째 열의 너비
+            // 3열에서 가장 넓은 이미지는 'Icons for PES' (약 96.95% 너비). 우측 빈 공간은 약 1.525%.
+            const offset = cellWidth * 0.01525;
+            mainNav.style.transform = `translateX(-${offset}px)`;
+        }
+    }
+
+    // 로드 시 및 창 크기 변경 시 정렬 함수 실행
+    window.addEventListener('load', alignMainNav);
+    window.addEventListener('resize', alignMainNav);
+    alignMainNav(); // 즉시 실행
 });

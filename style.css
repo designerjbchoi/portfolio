@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
 /* 기본 리셋 및 폰트 설정 */
 * {
     margin: 0;
@@ -9,30 +11,33 @@ body {
     background-color: #ffffff;
     color: #000000;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    padding: 60px 64px; /* 기존 80px에서 20% 감소 */
+    padding: clamp(16px, calc(10vw - 20px), 80px) 92px 60px 92px;
+    /* 가장 넓을 때 80px, 가장 좁을 때 16px 사이 유동적 변환 */
 }
 
 /* 헤더 영역 */
 .header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start; /* 맨 위 시작 포인트를 동일하게 맞춤 */
-    position: relative; /* 로고 절대 중앙 정렬을 위한 설정 */
-    margin-bottom: 72px; /* 기존 120px에서 총 40% 감소 (로고와 그리드 사이 여백) */
+    align-items: center;
+    /* 오른쪽 메뉴들이 로고의 세로 정중앙 선에 맞춰 정렬됨 */
+    margin-bottom: 48px;
+    /* 로고와 자기소개글 사이의 간격 */
 }
 
 /* 왼쪽 소개 텍스트 */
 .header-left {
     flex: 1;
-    max-width: 380px;
 }
 
 .header-left p {
-    font-family: "Courier New", Courier, monospace; /* 타자기 느낌 폰트 */
+    font-family: "Courier New", Courier, monospace;
+    /* 타자기 느낌 폰트 */
     font-size: 13px;
     line-height: 1.6;
     color: #000;
-    margin-top: 0; /* 단락의 기본 위쪽 여백을 제거하여 최상단에 밀착 */
+    margin-top: 0;
+    /* 단락의 기본 위쪽 여백을 제거하여 최상단에 밀착 */
 }
 
 /* 중앙 로고 */
@@ -42,6 +47,28 @@ body {
     transform: translateX(-50%);
     display: flex;
     justify-content: center;
+}
+
+/* 자기소개글 영역 */
+.intro-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 66px;
+    /* 데스크톱 기준 텍스트의 세로 위치를 134px에서 15% 위로 끌어올린 114px 간격으로 재설정 */
+    margin-bottom: 48px;
+    /* 자기소개글과 아래 썸네일 그리드 사이 간격 */
+}
+
+.intro-text {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #000;
+    text-align: center;
+    width: 455px;
+    /* 모바일/태블릿에서는 기존의 넓은 너비 유지 */
+    max-width: calc(100% - 72px);
+    /* 화면 가장 좁을 때(모바일) 자기소개글 양옆 마진을 기존(18px) 대비 3배(54px)로 늘리기 위한 여백 72px 추가 제한 */
 }
 
 .logo-link {
@@ -63,7 +90,8 @@ body {
 
 .main-nav {
     display: flex;
-    gap: 25px; /* 메뉴 사이 간격 */
+    gap: 25px;
+    /* 메뉴 사이 간격 */
 }
 
 .main-nav .nav-item {
@@ -81,8 +109,11 @@ body {
 /* 포트폴리오 그리드 레이아웃 */
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3열 그리드 */
-    gap: 48px; /* 가로 세로 간격 동일하게 설정 */
+    grid-template-columns: repeat(3, 1fr);
+    /* 3열 그리드 */
+    column-gap: 48px;
+    row-gap: 94px;
+    /* 가로 간격 48px 유지, 세로 간격 현재(85px)에서 10% 증가 (85px * 1.1 = 93.5px -> 94px) */
 }
 
 /* 개별 포트폴리오 아이템 */
@@ -97,8 +128,10 @@ body {
 /* 이미지 블럭 (회색 배경 플레이스홀더) */
 .image-block {
     width: 100%;
-    aspect-ratio: 4 / 3; /* 모든 썸네일을 동일한 크기(비율)로 통일 */
-    background-color: #f0f0f0; /* 회색 블럭 기본 색상 */
+    aspect-ratio: 4 / 3;
+    /* 모든 썸네일을 동일한 크기(비율)로 통일 */
+    background-color: #f0f0f0;
+    /* 회색 블럭 기본 색상 */
     margin-bottom: 20px;
     /* 나중에 이미지가 들어갈 때 자연스럽게 보이도록 배경 설정 준비 */
     background-size: contain;
@@ -113,7 +146,8 @@ body {
     font-weight: 400;
     text-align: center;
     color: #000;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; /* 산세리프 폰트 */
+    font-family: "Poppins", sans-serif;
+    /* Poppins 폰트 */
 }
 
 /* 우측 하단 빨간색 뱃지 (PDF 아이콘 등) */
@@ -121,8 +155,10 @@ body {
     position: absolute;
     width: 26px;
     height: 26px;
-    bottom: -4px; /* 타이틀 텍스트와 약간 정렬되도록 */
-    right: -10px; /* 컨테이너 바깥으로 살짝 튀어나오게 */
+    bottom: -4px;
+    /* 타이틀 텍스트와 약간 정렬되도록 */
+    right: -10px;
+    /* 컨테이너 바깥으로 살짝 튀어나오게 */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -184,34 +220,109 @@ body {
 }
 
 /* 반응형 디자인 지원 */
+@media (min-width: 1025px) {
+
+    /* 데스크톱(3열) 환경에서 같은 가로줄 프로젝트명 세로 위치 일괄 조정 */
+    .portfolio-item:nth-child(1) .item-title,
+    .portfolio-item:nth-child(2) .item-title,
+    .portfolio-item:nth-child(3) .item-title {
+        margin-top: -7%;
+        /* 1번째 가로줄 통일 */
+    }
+
+    .portfolio-item:nth-child(4) .item-title,
+    .portfolio-item:nth-child(5) .item-title,
+    .portfolio-item:nth-child(6) .item-title {
+        margin-top: 3%;
+        /* 2번째 가로줄 통일 */
+    }
+
+    .portfolio-item:nth-child(10) .item-title,
+    .portfolio-item:nth-child(11) .item-title,
+    .portfolio-item:nth-child(12) .item-title {
+        margin-top: 1%;
+        /* 4번째 가로줄 (Destiny 포함) 통일 */
+    }
+}
+
 @media (max-width: 1024px) {
     .portfolio-grid {
-        grid-template-columns: repeat(2, 1fr); /* 중간 크기 화면에서는 2열 */
+        grid-template-columns: repeat(2, 1fr);
+        /* 중간 크기 화면에서는 2열 */
+    }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+
+    /* 태블릿(2열) 환경에서 같은 가로줄 프로젝트명 세로 위치 통일 */
+    .portfolio-item:nth-child(1) .item-title,
+    .portfolio-item:nth-child(2) .item-title {
+        margin-top: -7%;
+        /* 1번째 가로줄 */
+    }
+
+    .portfolio-item:nth-child(3) .item-title,
+    .portfolio-item:nth-child(4) .item-title {
+        margin-top: -2.5%;
+        /* 기존 설정이 달랐던 아이템들이 같은 줄로 합쳐지므로 중간값으로 통일 */
+    }
+
+    .portfolio-item:nth-child(5) .item-title,
+    .portfolio-item:nth-child(6) .item-title {
+        margin-top: 3%;
+        /* 3번째 가로줄 */
+    }
+
+    .portfolio-item:nth-child(11) .item-title,
+    .portfolio-item:nth-child(12) .item-title {
+        margin-top: 1%;
+        /* 6번째 가로줄 (Destiny 포함) */
     }
 }
 
 @media (max-width: 768px) {
     body {
-        padding: 40px 20px;
+        padding: clamp(16px, calc(10vw - 20px), 80px) 18px 40px 18px;
+        /* 모바일 양옆 마진 20px에서 10% 줄인 18px로 변경 */
     }
-    
+
     .header {
         flex-direction: column;
         align-items: center;
-        gap: 40px;
-        margin-bottom: 80px;
+        gap: 28px;
+        /* 모바일에서 로고와 메뉴 사이의 간격을 기존 40px에서 30% 줄임 */
+        margin-bottom: 29px;
+        /* 자기소개글과 메뉴 사이의 간격을 24px에서 약간 늘림 */
     }
-    
-    .header-left, .header-center, .header-right {
+
+    .intro-container {
+        margin-top: 8px;
+        /* 상단 여백을 7px에서 약간 늘림 (총 간격 31px -> 37px로 20% 증가) */
+        margin-bottom: 1px;
+        /* 자기소개글과 썸네일 사이 간격 2px에서 약 40% 더 줄임 */
+    }
+
+    .header-left,
+    .header-center,
+    .header-right {
         text-align: center;
         justify-content: center;
         max-width: 100%;
     }
-    
-    .portfolio-grid {
-        grid-template-columns: 1fr; /* 모바일에서는 1열 */
+
+    .header-center {
+        position: static;
+        /* 모바일에서는 절대 정렬 해제하고 flex 컬럼에 편입 */
+        transform: none;
+        order: -1;
+        /* 로고가 항상 가장 위에 위치하도록 순서 강제 변경 */
     }
-    
+
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+        /* 모바일에서는 1열 */
+    }
+
     .hero-title {
         font-size: 28px;
     }
