@@ -95,9 +95,10 @@ body {
 }
 
 .main-nav .nav-item {
-    font-family: "Poppins", sans-serif;
-    font-size: 12px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 13px;
     font-weight: 300;
+    /* 100부터 900 사이의 숫자로 자유롭게 굵기를 조절할 수 있습니다 */
     text-decoration: none;
     color: #000;
     transition: opacity 0.2s ease;
@@ -143,12 +144,11 @@ body {
 
 /* 제목 텍스트 */
 .item-title {
-    font-size: 13px;
-    font-weight: 400;
+    font-size: 15px;
+    font-weight: 300;
     text-align: center;
     color: #000;
-    font-family: "Poppins", sans-serif;
-    /* Poppins 폰트 */
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 /* 우측 하단 빨간색 뱃지 (PDF 아이콘 등) */
