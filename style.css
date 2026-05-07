@@ -97,6 +97,7 @@ body {
 .main-nav .nav-item {
     font-family: "Courier New", Courier, monospace;
     font-size: 13px;
+    font-weight: 400;
     text-decoration: none;
     color: #000;
     transition: opacity 0.2s ease;
