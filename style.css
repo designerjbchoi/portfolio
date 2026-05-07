@@ -11,7 +11,7 @@ body {
     background-color: #ffffff;
     color: #000000;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    padding: clamp(16px, calc(10vw - 20px), 80px) 92px 60px 92px;
+    padding: clamp(16px, calc(10vw - 20px), 80px) 92px 90px 92px;
     /* 가장 넓을 때 80px, 가장 좁을 때 16px 사이 유동적 변환 */
 }
 
@@ -283,7 +283,7 @@ body {
 
 @media (max-width: 768px) {
     body {
-        padding: clamp(16px, calc(10vw - 20px), 80px) 18px 40px 18px;
+        padding: clamp(16px, calc(10vw - 20px), 80px) 18px 60px 18px;
         /* 모바일 양옆 마진 20px에서 10% 줄인 18px로 변경 */
     }
 
@@ -322,6 +322,66 @@ body {
     .portfolio-grid {
         grid-template-columns: 1fr;
         /* 모바일에서는 1열 */
+    }
+
+    /* 모바일 화면에서 Healthfirst 프로젝트명만 10% 위로 올림 */
+    .portfolio-item:nth-child(1) .item-title {
+        margin-top: -6%;
+    }
+
+    /* 모바일 화면에서 Safey 프로젝트명만 5% 위로 올림 */
+    .portfolio-item:nth-child(2) .item-title {
+        margin-top: -6%;
+    }
+
+    /* 모바일 화면에서 Snow Joe 프로젝트명만 5% 위로 올림 */
+    .portfolio-item:nth-child(3) .item-title {
+        margin-top: -6%;
+    }
+
+    /* 모바일 화면에서 SitEat 프로젝트명만 6% 위로 올림 */
+    .portfolio-item:nth-child(4) .item-title {
+        margin-top: -3%;
+    }
+
+    /* 모바일 화면에서 National Mustard Museum 프로젝트명만 10% 아래로 내림 */
+    .portfolio-item:nth-child(5) .item-title {
+        margin-top: 5%;
+    }
+
+    /* 모바일 화면에서 Icons for PES 프로젝트명만 2% 위로 올림 */
+    .portfolio-item:nth-child(6) .item-title {
+        margin-top: -4%;
+    }
+
+    /* 모바일 화면에서 UBRI Connect by Ripple 프로젝트명만 2% 아래로 내림 */
+    .portfolio-item:nth-child(7) .item-title {
+        margin-top: 1%;
+    }
+
+    /* 모바일 화면에서 Otl Aicher 프로젝트명만 3% 위로 올림 */
+    .portfolio-item:nth-child(8) .item-title {
+        margin-top: -3%;
+    }
+
+    /* 모바일 화면에서 Raging Bull 프로젝트명만 2% 위로 올림 */
+    .portfolio-item:nth-child(9) .item-title {
+        margin-top: -3%;
+    }
+
+    /* 모바일 화면에서 Gates of Eden 프로젝트명만 1% 아래로 내림 */
+    .portfolio-item:nth-child(10) .item-title {
+        margin-top: 1%;
+    }
+
+    /* 모바일 화면에서 Typography Zine 프로젝트명만 5% 위로 올림 */
+    .portfolio-item:nth-child(11) .item-title {
+        margin-top: -5%;
+    }
+
+    /* 모바일 화면에서 Destiny 프로젝트명만 3% 아래로 내림 */
+    .portfolio-item:nth-child(12) .item-title {
+        margin-top: 5%;
     }
 
     .hero-title {

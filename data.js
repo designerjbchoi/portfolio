@@ -36,8 +36,7 @@ const portfolioData = [
         id: 6,
         title: 'Icons for PES',
         image: 'image/thumbnail/Icons for PES.gif',
-        ratio: '3/2',
-        hasBadge: true
+        ratio: '3/2'
     },
     {
         id: 7,
@@ -73,7 +72,6 @@ const portfolioData = [
         id: 12,
         title: 'Destiny',
         image: 'image/thumbnail/Destiny.gif',
-        ratio: '1/1',
-        hasBadge: true
+        ratio: '1/1'
     }
 ];

@@ -84,40 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
         gridItem.appendChild(imageBlock);
         gridItem.appendChild(title);
 
-        // 4. 빨간색 뱃지 (예: PDF 아이콘)가 필요한 항목이면 추가
-        if (item.hasBadge) {
-            const badge = document.createElement('div');
-            badge.className = 'badge';
-
-            // PDF 아이콘을 단순화한 빨간색 원형 SVG 삽입
-            badge.innerHTML = `
-                <svg viewBox="0 0 24 24" fill="none" stroke="#e74c3c" stroke-width="1.5">
-                    <circle cx="12" cy="12" r="11" />
-                    <!-- 내부 P와 물결 모양 등 심볼 추가 -->
-                    <path d="M10 8 L10 16 M10 8 C13 8 14 10 12 12 L10 12" stroke-linejoin="round"/>
-                </svg>
-            `;
-            gridItem.appendChild(badge);
-        }
-
         // 최종 완성된 아이템을 그리드 컨테이너에 추가
         gridContainer.appendChild(gridItem);
     });
-
-    // 화면 우측 상단 메뉴(LinkedIn 등)의 오른쪽 끝을 3열에서 가장 우측으로 치우친 이미지(Icons for PES)의 우측 끝과 맞추기 위한 동적 정렬 함수
-    function alignMainNav() {
-        const gridCells = document.querySelectorAll('.portfolio-item');
-        const mainNav = document.querySelector('.main-nav');
-        if (gridCells.length >= 3 && mainNav) {
-            const cellWidth = gridCells[2].offsetWidth; // 3번째 열의 너비
-            // 3열에서 가장 넓은 이미지는 'Icons for PES' (약 96.95% 너비). 우측 빈 공간은 약 1.525%.
-            const offset = cellWidth * 0.01525;
-            mainNav.style.transform = `translateX(-${offset}px)`;
-        }
-    }
-
-    // 로드 시 및 창 크기 변경 시 정렬 함수 실행
-    window.addEventListener('load', alignMainNav);
-    window.addEventListener('resize', alignMainNav);
-    alignMainNav(); // 즉시 실행
 });
