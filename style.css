@@ -11,7 +11,7 @@ body {
     background-color: #ffffff;
     color: #000000;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    padding: clamp(16px, calc(10vw - 20px), 80px) 92px 135px 92px;
+    padding: clamp(16px, calc(10vw - 20px), 80px) 74px 135px 74px;
     /* 가장 넓을 때 80px, 가장 좁을 때 16px 사이 유동적 변환 */
 }
 
@@ -47,7 +47,7 @@ body {
 /* 프로젝트 헤더 타이틀 (Healthfirst 등) */
 .project-title-label {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 23px;
+    font-size: 27px;
     /* 22px + 1pt */
     font-weight: 600;
     line-height: 1.2;
@@ -64,7 +64,8 @@ body {
     line-height: 1.4;
     color: #555;
     display: block;
-    margin-top: 0.1%;
+    margin-top: 4px;
+    /* 아주 살짝 아래로 내리기 위해 간격 추가 */
 }
 
 /* 중앙 로고 */
@@ -116,8 +117,18 @@ body {
     position: fixed;
     top: clamp(16px, calc(10vw - 20px), 80px);
     /* 홈화면 기본 top 값 */
-    right: 92px;
+    right: 74px;
     z-index: 1000;
+}
+
+/* 홈 화면(Index)에서 메뉴를 상단으로 100% 끌어올림 (로고 최상단 라인과 맞춤) */
+.header:not(:has(.header-left)) .header-right {
+    height: 72px;
+    align-items: flex-start;
+    margin-top: -7.4px;
+    /* 현재 위치(-11px)에서 5%(약 3.6px) 정도 아래로 내림 */
+    right: 88px;
+    /* 프로젝트 페이지(기본 74px)는 유지하고 홈 화면에서만 안쪽으로 밀어 Snow Joe 썸네일 우측 끝과 정렬 */
 }
 
 /* 프로젝트 페이지만 nav를 50% 위로 올림 (header-left 존재 시) */
@@ -214,7 +225,8 @@ body {
 }
 
 .project-detail {
-    max-width: 1000px;
+    max-width: 1112px;
+    /* 현재 1170px에서 5% 축소 */
     margin: 0 auto;
     padding-bottom: 100px;
 }
@@ -268,7 +280,8 @@ body {
     line-height: 1.8;
     color: #000;
     margin-bottom: 32px;
-    max-width: 680px;
+    max-width: 756px;
+    /* 현재 796px에서 5% 축소 */
 }
 
 /* 섹션 내 소제목 */
@@ -331,7 +344,8 @@ body {
     line-height: 1.8;
     color: #000;
     margin-top: 24px;
-    max-width: 680px;
+    max-width: 756px;
+    /* 현재 796px에서 5% 축소 */
 }
 
 /* 반응형 디자인 지원 */
@@ -397,8 +411,8 @@ body {
 
 @media (max-width: 768px) {
     body {
-        padding: clamp(16px, calc(10vw - 20px), 80px) 18px 90px 18px;
-        /* 모바일 양옆 마진 20px에서 10% 줄인 18px로 변경 */
+        padding: clamp(16px, calc(10vw - 20px), 80px) 14px 90px 14px;
+        /* 모바일 양옆 마진 18px에서 20% 줄인 14px로 변경 */
     }
 
     .header {
@@ -425,9 +439,14 @@ body {
         max-width: 100%;
     }
 
-    .header-right {
+    .header-right,
+    .header:not(:has(.header-left)) .header-right {
         /* 모바일에서는 가로폭이 좁아 로고와 겹칠 수 있으므로 상단 고정을 해제합니다 */
         position: static;
+        height: auto;
+        align-items: center;
+        margin-top: 0;
+        /* 모바일에서는 여백 초기화 */
     }
 
     /* 모바일: 프로젝트 페이지 헤더 세로 스택 배치 */
