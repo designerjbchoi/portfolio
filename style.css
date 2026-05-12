@@ -284,7 +284,7 @@ body {
 
 /* Company Intro 텍스트 2포인트 축소 */
 .company-intro {
-    font-size: 5px;
+    font-size: 11px;
     /* 기존 13px에서 2px 작게 조절 */
 }
 
