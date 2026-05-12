@@ -11,7 +11,7 @@ body {
     background-color: #ffffff;
     color: #000000;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    padding: clamp(16px, calc(10vw - 20px), 80px) 92px 90px 92px;
+    padding: clamp(16px, calc(10vw - 20px), 80px) 92px 135px 92px;
     /* 가장 넓을 때 80px, 가장 좁을 때 16px 사이 유동적 변환 */
 }
 
@@ -20,24 +20,51 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* 오른쪽 메뉴들이 로고의 세로 정중앙 선에 맞춰 정렬됨 */
     margin-bottom: 48px;
-    /* 로고와 자기소개글 사이의 간격 */
+}
+
+/* 프로젝트 페이지: header-left 타이틀이 nav(right)와 같은 세로 위치에 오도록 조정 */
+.header:has(.header-left) {
+    align-items: flex-start;
+    margin-top: calc(-1 * clamp(8px, calc(5vw - 10px), 40px));
+    /* body padding-top(2x) - nav top(1x) = nav top만큼 위로 올림 */
 }
 
 /* 왼쪽 소개 텍스트 */
 .header-left {
     flex: 1;
+    /* position: fixed 제거 — 스크롤 시 함께 올라감 */
 }
 
 .header-left p {
     font-family: "Courier New", Courier, monospace;
-    /* 타자기 느낌 폰트 */
     font-size: 13px;
     line-height: 1.6;
     color: #000;
     margin-top: 0;
-    /* 단락의 기본 위쪽 여백을 제거하여 최상단에 밀착 */
+}
+
+/* 프로젝트 헤더 타이틀 (Healthfirst 등) */
+.project-title-label {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 23px;
+    /* 22px + 1pt */
+    font-weight: 600;
+    line-height: 1.2;
+    color: #000;
+    display: block;
+    margin-bottom: 2px;
+}
+
+/* 프로젝트 헤더 서브라벨 (UI/UX, Branding 등) */
+.project-sub-label {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.4;
+    color: #555;
+    display: block;
+    margin-top: 0.1%;
 }
 
 /* 중앙 로고 */
@@ -86,6 +113,16 @@ body {
     flex: 1;
     display: flex;
     justify-content: flex-end;
+    position: fixed;
+    top: clamp(16px, calc(10vw - 20px), 80px);
+    /* 홈화면 기본 top 값 */
+    right: 92px;
+    z-index: 1000;
+}
+
+/* 프로젝트 페이지만 nav를 50% 위로 올림 (header-left 존재 시) */
+.header:has(.header-left) .header-right {
+    top: clamp(8px, calc(5vw - 10px), 40px);
 }
 
 .main-nav {
@@ -220,6 +257,83 @@ body {
     border-top: 1px solid #eaeaea;
 }
 
+/* =========================================
+   프로젝트 상세 페이지 공통 텍스트 스타일
+   ========================================= */
+
+/* 섹션 내 설명 단락 */
+.section-description {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 13px;
+    line-height: 1.8;
+    color: #000;
+    margin-bottom: 32px;
+    max-width: 680px;
+}
+
+/* 섹션 내 소제목 */
+.section-subtitle {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    margin-bottom: 12px;
+    margin-top: 32px;
+    color: #000;
+}
+
+/* Company Intro 텍스트 2포인트 축소 */
+.company-intro {
+    font-size: 5px;
+    /* 기존 13px에서 2px 작게 조절 */
+}
+
+/* 이미지 두 개 나란히 (세로형) */
+.placeholder-row {
+    display: flex;
+    gap: 24px;
+}
+
+.placeholder-row .placeholder-block {
+    flex: 1;
+}
+
+/* 3열 이미지 그리드 */
+.placeholder-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+/* 4열 이미지 그리드 */
+.placeholder-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+/* 5열 이미지 그리드 */
+.placeholder-grid-5 {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+}
+
+/* 그리드 행 사이 간격 */
+.grid-mt {
+    margin-top: 16px;
+}
+
+/* 히어로 하단 개요 텍스트 */
+.hero-overview {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 13px;
+    line-height: 1.8;
+    color: #000;
+    margin-top: 24px;
+    max-width: 680px;
+}
+
 /* 반응형 디자인 지원 */
 @media (min-width: 1025px) {
 
@@ -283,7 +397,7 @@ body {
 
 @media (max-width: 768px) {
     body {
-        padding: clamp(16px, calc(10vw - 20px), 80px) 18px 60px 18px;
+        padding: clamp(16px, calc(10vw - 20px), 80px) 18px 90px 18px;
         /* 모바일 양옆 마진 20px에서 10% 줄인 18px로 변경 */
     }
 
@@ -309,6 +423,41 @@ body {
         text-align: center;
         justify-content: center;
         max-width: 100%;
+    }
+
+    .header-right {
+        /* 모바일에서는 가로폭이 좁아 로고와 겹칠 수 있으므로 상단 고정을 해제합니다 */
+        position: static;
+    }
+
+    /* 모바일: 프로젝트 페이지 헤더 세로 스택 배치 */
+    .header:has(.header-left) {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    /* 모바일: nav를 맨 위에 배치 */
+    .header:has(.header-left) .header-right {
+        position: static;
+        order: -1;
+        /* 가장 위 */
+        width: 100%;
+    }
+
+    /* 모바일: 타이틀/서브라벨을 nav 아래에 배치 */
+    .header:has(.header-left) .header-left {
+        position: static;
+        order: 0;
+        width: 100%;
+        text-align: left;
+        margin-top: 5%;
+        /* 10%에서 5% 위로 올림 */
+    }
+
+    .header:has(.header-left) .header-left .project-sub-label {
+        margin-top: 4px;
+        /* 모바일에서 서브라벨 간격 고정 */
     }
 
     .header-center {

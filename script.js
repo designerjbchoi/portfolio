@@ -9,8 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
         gridItem.style.color = 'inherit'; // 기본 색상 상속
 
         // 현재 페이지가 projects 폴더 내부에 있는지 확인
-        const isProjectPage = window.location.pathname.includes('/projects/');
-        const basePath = isProjectPage ? '' : 'projects/';
+        const isProjectPage = window.location.pathname.includes('/projects_html/');
+        const basePath = isProjectPage ? '' : 'projects_html/';
 
         // 제목을 기반으로 HTML 파일 이름 생성 (예: 'Snow Joc' -> 'snow_joc.html')
         const fileName = item.title.toLowerCase().replace(/[^a-z0-9]+/g, '_') + '.html';
