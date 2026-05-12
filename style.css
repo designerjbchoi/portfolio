@@ -242,10 +242,17 @@ body:has(.header-left) {
 }
 
 .project-detail {
-    max-width: 1112px;
-    /* 현재 1170px에서 5% 축소 */
+    max-width: 1120px;
+    /* 1200px로 넓이 증가 */
     margin: 0 auto;
     padding-bottom: 100px;
+}
+
+/* 프로젝트 상세 페이지 내 이미지 가운데 정렬 */
+.project-detail img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .project-hero {
@@ -278,6 +285,8 @@ body:has(.header-left) {
     width: 100%;
     background-color: #f0f0f0;
     border-radius: 2px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .other-projects-section {
@@ -297,8 +306,8 @@ body:has(.header-left) {
     line-height: 1.8;
     color: #000;
     margin-bottom: 32px;
-    max-width: 756px;
-    /* 현재 796px에서 5% 축소 */
+    max-width: 816px;
+    /* 1200px에 비례하여 넓이 조절 */
 }
 
 /* 섹션 내 소제목 */
@@ -361,8 +370,8 @@ body:has(.header-left) {
     line-height: 1.8;
     color: #000;
     margin-top: 24px;
-    max-width: 756px;
-    /* 현재 796px에서 5% 축소 */
+    max-width: 816px;
+    /* 1200px에 비례하여 넓이 조절 */
 }
 
 /* 반응형 디자인 지원 */
