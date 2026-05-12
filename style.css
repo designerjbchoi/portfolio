@@ -374,6 +374,12 @@ body:has(.header-left) {
     /* 1200px에 비례하여 넓이 조절 */
 }
 
+/* How Might We 질문 텍스트 - 데스크톱 기본 여백 */
+.how-might-we-text {
+    padding: 156px;
+    margin-top: -160px;
+}
+
 /* 반응형 디자인 지원 */
 @media (min-width: 1025px) {
 
@@ -512,6 +518,18 @@ body:has(.header-left) {
         text-align: left;
         margin-top: calc(10%);
         /* 기존 5%에서 4px 아래로 내림 */
+    }
+
+    /* 모바일: How Might We 텍스트가 양옆 마진 제외하고 화면을 다 쓰도록 패딩 제거 */
+    .how-might-we-text {
+        padding: 0;
+        margin-top: 0;
+        /* 모바일에서 위쪽 텍스트와 겹침 방지 */
+    }
+
+    /* 모바일: 특정 이미지가 양옆 마진 제외하고 화면을 다 쓰도록 100%로 변경 */
+    .full-width-mobile {
+        width: 100% !important;
     }
 
     .header:has(.header-left) .header-left .project-sub-label {
