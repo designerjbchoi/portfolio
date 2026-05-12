@@ -15,6 +15,13 @@ body {
     /* 가장 넓을 때 80px, 가장 좁을 때 16px 사이 유동적 변환 */
 }
 
+/* 프로젝트 페이지(header-left 존재)에서만 양옆 패딩(마진) 10% 추가 축소 */
+body:has(.header-left) {
+    padding-left: 60px;
+    /* 기존 74px에서 10% 축소 */
+    padding-right: 60px;
+}
+
 /* 헤더 영역 */
 .header {
     display: flex;
@@ -134,12 +141,22 @@ body {
 /* 프로젝트 페이지만 nav를 50% 위로 올림 (header-left 존재 시) */
 .header:has(.header-left) .header-right {
     top: clamp(8px, calc(5vw - 10px), 40px);
+    right: 66.6px;
+    /* body 패딩과 동일하게 우측 여백 10% 축소 */
+    justify-content: flex-end;
+    margin-top: 8.4px;
+    /* 왼쪽 타이틀(27px) 텍스트 박스와 시각적으로 완벽한 수직 중앙 정렬을 맞춤 */
 }
 
 .main-nav {
     display: flex;
     gap: 25px;
     /* 메뉴 사이 간격 */
+}
+
+/* 프로젝트 페이지에서 메뉴 그룹 우측 정렬 강제 */
+.header:has(.header-left) .main-nav {
+    justify-content: flex-end;
 }
 
 .main-nav .nav-item {
@@ -415,6 +432,13 @@ body {
         /* 모바일 양옆 마진 18px에서 20% 줄인 14px로 변경 */
     }
 
+    /* 모바일 프로젝트 페이지 양옆 마진도 10% 추가 축소 */
+    body:has(.header-left) {
+        padding-left: 12.6px;
+        /* 14px에서 10% 축소 */
+        padding-right: 12.6px;
+    }
+
     .header {
         flex-direction: column;
         align-items: center;
@@ -462,6 +486,13 @@ body {
         order: -1;
         /* 가장 위 */
         width: 100%;
+        margin-top: 12px;
+        justify-content: center;
+    }
+
+    /* 모바일: 프로젝트 페이지 메뉴 그룹 가운데 정렬 */
+    .header:has(.header-left) .main-nav {
+        justify-content: center;
     }
 
     /* 모바일: 타이틀/서브라벨을 nav 아래에 배치 */
@@ -470,8 +501,8 @@ body {
         order: 0;
         width: 100%;
         text-align: left;
-        margin-top: 5%;
-        /* 10%에서 5% 위로 올림 */
+        margin-top: calc(10%);
+        /* 기존 5%에서 4px 아래로 내림 */
     }
 
     .header:has(.header-left) .header-left .project-sub-label {
