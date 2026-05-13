@@ -374,8 +374,311 @@ body:has(.header-left) {
     /* 1200px에 비례하여 넓이 조절 */
 }
 
+/* =========================================
+   Typography (타이포그래피 및 소제목)
+   ========================================= */
+.section-title-h1 {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #000;
+}
+
+.section-title-p {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: left;
+    color: #555;
+}
+
+.text-module-sub {
+    font-weight: 400;
+    color: #000;
+    font-size: 17px;
+}
+
+/* =========================================
+   Layout & Components (레이아웃 및 컴포넌트)
+   ========================================= */
+/* Hero Image Container */
+.hero-image-container {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Full Bleed Video Section (데스크톱 풀스크린) */
+.video-section-full {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+}
+
+.video-wrapper {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    width: 100%;
+}
+
+.video-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* 7:3 비율 2열 이미지 그리드 */
+.grid-7-3 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.grid-col-7 {
+    flex: 7;
+    min-width: 300px;
+}
+
+.grid-col-3 {
+    flex: 3;
+    min-width: 300px;
+}
+
+/* 세로 이미지 스택 (자동 여백 관리) */
+.image-stack {
+    width: 100%;
+}
+
+.image-stack img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 40px;
+}
+
+.image-stack img:last-child {
+    margin-bottom: 0;
+}
+
+/* 테두리 포인트 */
+.img-border-green {
+    border: 0.5px solid #529535;
+}
+
+/* =========================================
+   Utility Classes (여백, 크기, 비율 유틸리티)
+   ========================================= */
+/* Aspect Ratios */
+.ar-16-5 {
+    aspect-ratio: 16 / 5;
+}
+
+.ar-16-6 {
+    aspect-ratio: 16 / 6;
+}
+
+.ar-16-7 {
+    aspect-ratio: 16 / 7;
+}
+
+.ar-16-8 {
+    aspect-ratio: 16 / 8;
+}
+
+.ar-16-9 {
+    aspect-ratio: 16 / 9;
+}
+
+.ar-16-10 {
+    aspect-ratio: 16 / 10;
+}
+
+.ar-16-12 {
+    aspect-ratio: 16 / 12;
+}
+
+.ar-9-16 {
+    aspect-ratio: 9 / 16;
+}
+
+.ar-4-3 {
+    aspect-ratio: 4 / 3;
+}
+
+/* Widths */
+.w-100 {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.w-80 {
+    width: 80%;
+    height: auto;
+    display: block;
+}
+
+.w-70 {
+    width: 70%;
+    height: auto;
+    display: block;
+}
+
+.w-60 {
+    width: 60%;
+    height: auto;
+    display: block;
+}
+
+.max-w-none {
+    max-width: none;
+}
+
+.mw-260 {
+    max-width: 260px;
+}
+
+/* Spacing - Margins */
+.mt-neg-16 {
+    margin-top: -16px;
+}
+
+.mt-12 {
+    margin-top: 12px;
+}
+
+.mt-16 {
+    margin-top: 16px;
+}
+
+.mt-24 {
+    margin-top: 24px;
+}
+
+.mt-30 {
+    margin-top: 30px;
+}
+
+.mt-36 {
+    margin-top: 36px;
+}
+
+.mt-40 {
+    margin-top: 40px;
+}
+
+.mt-44 {
+    margin-top: 44px;
+}
+
+.mt-52 {
+    margin-top: 52px;
+}
+
+.mt-68 {
+    margin-top: 68px;
+}
+
+.mt-72 {
+    margin-top: 72px;
+}
+
+.mt-92 {
+    margin-top: 92px;
+}
+
+.mt-100 {
+    margin-top: 100px;
+}
+
+.mt-108 {
+    margin-top: 108px;
+}
+
+.mt-112 {
+    margin-top: 112px;
+}
+
+.mt-122 {
+    margin-top: 122px;
+}
+
+.mt-134 {
+    margin-top: 134px;
+}
+
+.mt-140 {
+    margin-top: 140px;
+}
+
+.mt-152 {
+    margin-top: 152px;
+}
+
+.mt-162 {
+    margin-top: 162px;
+}
+
+.mb-0 {
+    margin-bottom: 0 !important;
+}
+
+.mb-16 {
+    margin-bottom: 16px;
+}
+
+.mb-32 {
+    margin-bottom: 32px;
+}
+
+.mb-40 {
+    margin-bottom: 40px;
+}
+
+.mb-60 {
+    margin-bottom: 60px;
+}
+
+.mb-100 {
+    margin-bottom: 100px;
+}
+
+/* Spacing - Paddings */
+.pt-0 {
+    padding-top: 0 !important;
+}
+
+.pb-0 {
+    padding-bottom: 0 !important;
+}
+
+/* Alignment */
+.text-center {
+    text-align: center;
+}
+
 /* How Might We 질문 텍스트 - 데스크톱 기본 여백 */
 .how-might-we-text {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 30px;
+    font-weight: 300;
+    text-align: center;
+    color: #000;
+    line-height: 1.4;
     padding: 156px;
     margin-top: -160px;
 }
