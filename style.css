@@ -12,14 +12,16 @@ body {
     color: #000000;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     padding: clamp(16px, calc(10vw - 20px), 80px) 74px 135px 74px;
+    /* Default padding for body */
     /* 가장 넓을 때 80px, 가장 좁을 때 16px 사이 유동적 변환 */
 }
 
 /* 프로젝트 페이지(header-left 존재)에서만 양옆 패딩(마진) 10% 추가 축소 */
 body:has(.header-left) {
-    padding-left: 60px;
-    /* 기존 74px에서 10% 축소 */
-    padding-right: 60px;
+    padding-left: 66.6px;
+    /* Original 74px - 10% = 66.6px */
+    padding-right: 66.6px;
+    /* Original 74px - 10% = 66.6px */
 }
 
 /* 헤더 영역 */
@@ -142,6 +144,7 @@ body:has(.header-left) {
 .header:has(.header-left) .header-right {
     top: clamp(8px, calc(5vw - 10px), 40px);
     right: 66.6px;
+    /* Match body padding */
     /* body 패딩과 동일하게 우측 여백 10% 축소 */
     justify-content: flex-end;
     margin-top: 8.4px;
@@ -468,6 +471,8 @@ body:has(.header-left) {
     height: auto;
     display: block;
     margin-bottom: 40px;
+    margin-bottom: 60px;
+    /* 이미지들 사이 간격을 20px 더 넓힘 */
 }
 
 .image-stack img:last-child {
@@ -649,12 +654,25 @@ body:has(.header-left) {
     margin-bottom: 40px;
 }
 
+.mb-52 {
+    margin-bottom: 52px;
+}
+
 .mb-60 {
     margin-bottom: 60px;
 }
 
+.mb-80 {
+    margin-bottom: 80px;
+}
+
 .mb-100 {
     margin-bottom: 100px;
+}
+
+/* 강제 적용 마진 (우선순위 문제 해결) */
+.mb-120 {
+    margin-bottom: 120px !important;
 }
 
 /* Spacing - Paddings */
