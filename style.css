@@ -11,7 +11,7 @@ body {
     background-color: #ffffff;
     color: #000000;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    padding: clamp(16px, calc(10vw - 20px), 80px) 74px 135px 74px;
+    padding: clamp(16px, calc(10vw - 20px), 80px) 74px 136px 74px;
     /* Default padding for body */
     /* 가장 넓을 때 80px, 가장 좁을 때 16px 사이 유동적 변환 */
 }
@@ -62,7 +62,7 @@ body:has(.header-left) {
     line-height: 1.2;
     color: #000;
     display: block;
-    margin-bottom: 2px;
+    margin-bottom: 4px;
 }
 
 /* 프로젝트 헤더 서브라벨 (UI/UX, Branding 등) */
@@ -90,7 +90,7 @@ body:has(.header-left) {
 .intro-container {
     display: flex;
     justify-content: center;
-    margin-top: 66px;
+    margin-top: 68px;
     /* 데스크톱 기준 텍스트의 세로 위치를 134px에서 15% 위로 끌어올린 114px 간격으로 재설정 */
     margin-bottom: 48px;
     /* 자기소개글과 아래 썸네일 그리드 사이 간격 */
@@ -116,6 +116,8 @@ body:has(.header-left) {
     width: 72px;
     height: 72px;
     object-fit: contain;
+    display: block;
+    /* 인라인 이미지 아래 글자 하단 여백(약 3px) 제거 — 세로 간격을 4의 배수로 맞추기 위함 */
 }
 
 /* 오른쪽 네비게이션 메뉴 */
@@ -182,8 +184,8 @@ body:has(.header-left) {
     grid-template-columns: repeat(3, 1fr);
     /* 3열 그리드 */
     column-gap: 48px;
-    row-gap: 94px;
-    /* 가로 간격 48px 유지, 세로 간격 현재(85px)에서 10% 증가 (85px * 1.1 = 93.5px -> 94px) */
+    row-gap: 96px;
+    /* 가로 간격 48px 유지, 세로 간격 94px → 4의 배수 96px로 반올림 */
 }
 
 /* 개별 포트폴리오 아이템 */
@@ -279,7 +281,7 @@ body:has(.header-left) {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     font-size: 11px;
     font-weight: 700;
-    margin-bottom: 25px;
+    margin-bottom: 24px;
     letter-spacing: 1px;
 }
 
@@ -293,7 +295,7 @@ body:has(.header-left) {
 }
 
 .other-projects-section {
-    margin-top: 150px;
+    margin-top: 152px;
     padding-top: 80px;
     border-top: 1px solid #eaeaea;
 }
@@ -574,8 +576,8 @@ body:has(.header-left) {
     margin-top: 24px;
 }
 
-.mt-30 {
-    margin-top: 30px;
+.mt-32 {
+    margin-top: 32px;
 }
 
 .mt-36 {
@@ -618,12 +620,12 @@ body:has(.header-left) {
     margin-top: 112px;
 }
 
-.mt-122 {
-    margin-top: 122px;
+.mt-124 {
+    margin-top: 124px;
 }
 
-.mt-134 {
-    margin-top: 134px;
+.mt-136 {
+    margin-top: 136px;
 }
 
 .mt-140 {
@@ -634,8 +636,8 @@ body:has(.header-left) {
     margin-top: 152px;
 }
 
-.mt-162 {
-    margin-top: 162px;
+.mt-164 {
+    margin-top: 164px;
 }
 
 .mb-0 {
@@ -764,7 +766,7 @@ body:has(.header-left) {
 
 @media (max-width: 768px) {
     body {
-        padding: clamp(16px, calc(10vw - 20px), 80px) 14px 90px 14px;
+        padding: clamp(16px, calc(10vw - 20px), 80px) 14px 92px 14px;
         /* 모바일 양옆 마진 18px에서 20% 줄인 14px로 변경 */
     }
 
@@ -778,16 +780,16 @@ body:has(.header-left) {
     .header {
         flex-direction: column;
         align-items: center;
-        gap: 28px;
-        /* 모바일에서 로고와 메뉴 사이의 간격을 기존 40px에서 30% 줄임 */
-        margin-bottom: 29px;
+        gap: 32px;
+        /* 모바일에서 로고와 메뉴 사이의 간격 (실측 31px → 4의 배수 32px로 반올림) */
+        margin-bottom: 28px;
         /* 자기소개글과 메뉴 사이의 간격을 24px에서 약간 늘림 */
     }
 
     .intro-container {
         margin-top: 8px;
         /* 상단 여백을 7px에서 약간 늘림 (총 간격 31px -> 37px로 20% 증가) */
-        margin-bottom: 1px;
+        margin-bottom: 0;
         /* 자기소개글과 썸네일 사이 간격 2px에서 약 40% 더 줄임 */
     }
 
@@ -941,4 +943,235 @@ body:has(.header-left) {
     .hero-title {
         font-size: 28px;
     }
+}
+/* =========================================
+   Cargo 12-Column Grid (라이브 사이트 레이아웃 재현용 — 신규 추가 클래스)
+   기존 스타일은 변경하지 않고 새로운 클래스만 추가합니다.
+   ========================================= */
+.cg-row {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+    align-items: start;
+    margin-top: 24px;
+}
+
+.cg-col {
+    min-width: 0;
+}
+
+.cg-col img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* 그래픽 디자인 이미지가 세로로 나열될 때 이미지 사이 간격
+   (같은 칸 안에서 줄바꿈으로 떨어진 이미지 / 연속된 이미지 행) */
+.cg-col img.cg-sp,
+.cg-row:has(img) + .cg-row:has(img) {
+    margin-top: 72px;
+}
+
+/* 문장으로만 된 이미지(.text-image)가 위나 아래에 올 때는 기존 간격 유지 */
+.cg-col img.text-image + img.cg-sp,
+.cg-col img + img.text-image.cg-sp,
+.cg-row:has(img.text-image) + .cg-row:has(img),
+.cg-row:has(img) + .cg-row:has(img.text-image) {
+    margin-top: 48px;
+}
+
+.cg-col .section-description {
+    max-width: none;
+    margin-bottom: 0;
+}
+
+/* DESKTOP / MOBILE 같은 이미지 캡션 */
+.cg-caption {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #000;
+    text-align: center;
+    margin-bottom: 20px;
+    /* 이미지 위 설명 텍스트와 그 밑 이미지 사이 간격 (12px + 8px) */
+}
+
+/* 이미지 뒤에 오는 질문/태그라인 (how-might-we-text 보조) */
+.how-might-we-text.cg-statement {
+    margin-top: 0;
+    padding: 100px 156px;
+}
+
+/* YouTube 등 조작 가능한 임베드 영상 */
+.video-iframe.cg-embed {
+    pointer-events: auto;
+}
+
+@media (max-width: 768px) {
+    .cg-row {
+        display: block;
+    }
+
+    .cg-col+.cg-col {
+        margin-top: 24px;
+    }
+
+    .how-might-we-text.cg-statement {
+        padding: 48px 0;
+    }
+}
+
+/* 썸네일 scale 확대(script.js)로 인해 모바일에서 생기는 가로 스크롤 방지
+   — 화면 밖으로 넘친 부분만 잘라내고, 썸네일 크기/위치는 그대로 유지 */
+html,
+body {
+    overflow-x: clip;
+}
+
+/* 타이틀(.section-title-h1 / .section-title-p) 바로 밑에 이미지가 올 때 두 요소 사이 간격
+   — Snow Joe 기준 56px, 모든 프로젝트 페이지 공통 */
+div:has(> .section-title-h1, > .section-title-p) + .cg-row:has(> .cg-col:first-child > img:first-child),
+div:has(> .section-title-h1, > .section-title-p) + main.project-detail:has(> section:first-child > img:first-child),
+div:has(> .section-title-h1, > .section-title-p) + .image-stack,
+div:has(> .section-title-h1, > .section-title-p) + .grid-7-3 {
+    margin-top: 56px;
+}
+
+/* 타이틀(.section-title-h1) 바로 아래 세부타이틀(.section-title-p)이 올 때 두 텍스트 사이 간격
+   — Healthfirst "Other Brand Design Projects" 기준(100px의 1/3, 4의 배수로 반올림), 모든 프로젝트 페이지 공통 */
+div:has(> .section-title-h1) + div > .section-title-p {
+    margin-top: 32px;
+}
+
+/* 왼쪽 타이틀 옆(같은 행) 또는 타이틀 바로 밑에 오는 본문 텍스트 — 18px
+   — Safey "Challenges" 기준, 모든 프로젝트 페이지 공통 */
+.cg-row:has(> .cg-col > .section-title-h1, > .cg-col > .section-title-p) .section-description,
+div:has(> .section-title-h1, > .section-title-p) + .cg-row > .cg-col > .section-description:first-child {
+    font-size: 18px;
+}
+
+/* 본문 텍스트(.section-description)와 이미지가 세로로 이어질 때 사이 간격 — 모든 프로젝트 페이지 공통 */
+.cg-col .section-description + img,
+.cg-col img + .section-description,
+.cg-row:has(> .cg-col > img:last-child) + .cg-row:has(> .cg-col > .section-description:first-child),
+.cg-row:has(> .cg-col > .section-description:last-child) + .cg-row:has(> .cg-col > img:first-child) {
+    margin-top: 140px;
+}
+
+/* 프로젝트 페이지 맨 위 히로 이미지 바로 밑에 본문 텍스트가 올 때 사이 간격
+   — Snow Joe 기준 56px, 모든 프로젝트 페이지 공통 */
+main.project-detail:has(> .project-hero img) + .cg-row:has(> .cg-col > .section-description:first-child) {
+    margin-top: 56px;
+}
+
+/* 본문 맨 위 굵은 타이틀(.desc-title)과 그 밑 본문 사이 한 줄 띄우기 — 모든 프로젝트 페이지 공통 */
+.section-description .desc-title {
+    display: block;
+    margin-bottom: 12px;
+}
+
+.section-description .desc-title + br {
+    display: none;
+}
+
+/* 이미지 위에 제목처럼 붙는 한두 단어 본문 텍스트(DESKTOP / MOBILE 등)를 굵게 — 모든 프로젝트 페이지 공통 */
+.cg-caption {
+    font-weight: bold;
+}
+
+/* 큰 제목 바로 밑에 이미지 설명 텍스트(.cg-caption, 예: DESKTOP / MOBILE)가 올 때 사이 간격
+   — Snow Joe "TV Offer Web Page Design" 기준 40px, 모든 프로젝트 페이지 공통 */
+div:has(> .section-title-h1, > .section-title-p) + .cg-row:has(> .cg-col > .cg-caption:first-child) {
+    margin-top: 40px;
+}
+
+/* 위에 이미지가 있고 그 밑에 이미지 설명 텍스트(.cg-caption, 예: DESKTOP / MOBILE)가 올 때 사이 간격
+   — Snow Joe 기준(72px + 12px), 모든 프로젝트 페이지 공통 */
+.cg-row:has(img) + .cg-row:has(> .cg-col > .cg-caption:first-child) {
+    margin-top: 84px;
+}
+
+/* 흰색 배경이 포함된 이미지(.img-white-bg) — 사이트 흰 배경과 구분되도록 연한 회색 0.5px 테두리, 모든 프로젝트 페이지 공통 */
+.img-white-bg {
+    border: 0.5px solid #d9d9d9;
+}
+
+/* 위에 다른 소프로젝트 이미지(또는 영상)가 있고 그 밑에 소프로젝트 제목이 올 때 사이 간격
+   — 기존 간격(mt-*)에서 8px 더 넓힘. Snow Joe "Banner Designs in Different Social Media Formats" 기준(100px → 108px),
+     Healthfirst처럼 섹션별로 다르게 잡은 간격도 각각 8px씩 늘어나 위계가 유지됨. 모든 프로젝트 페이지 공통 */
+:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-12 {
+    margin-top: 20px;
+}
+
+:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-16 {
+    margin-top: 24px;
+}
+
+:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-24 {
+    margin-top: 32px;
+}
+
+:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-32 {
+    margin-top: 40px;
+}
+
+:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-36 {
+    margin-top: 44px;
+}
+
+:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-40 {
+    margin-top: 48px;
+}
+
+:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-44 {
+    margin-top: 52px;
+}
+
+:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-52 {
+    margin-top: 60px;
+}
+
+:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-68 {
+    margin-top: 76px;
+}
+
+:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-72 {
+    margin-top: 80px;
+}
+
+:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-92 {
+    margin-top: 100px;
+}
+
+:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-100 {
+    margin-top: 108px;
+}
+
+:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-108 {
+    margin-top: 116px;
+}
+
+:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-112 {
+    margin-top: 120px;
+}
+
+:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-124 {
+    margin-top: 132px;
+}
+
+:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-136 {
+    margin-top: 144px;
+}
+
+:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-140 {
+    margin-top: 148px;
+}
+
+:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-152 {
+    margin-top: 160px;
+}
+
+:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-164 {
+    margin-top: 172px;
 }
