@@ -1185,10 +1185,10 @@ main.project-detail:has(> .project-hero) + main.project-detail .how-might-we-tex
     /* 줄 사이 간격: 기존 61.6px(44px × 1.4)에서 4px 줄여 4의 배수 56px */
 }
 
-/* 히로 이미지와 그 바로 밑 큰 문장 사이 간격 — SitEat 기준 24px, 모든 프로젝트 페이지 공통 */
+/* 히로 이미지와 그 바로 밑 큰 문장 사이 간격 — SitEat 기준 32px, 모든 프로젝트 페이지 공통 */
 main.project-detail:has(> .project-hero) + main.project-detail .how-might-we-text.cg-statement,
 .header + .cg-row:has(img) + main.project-detail .how-might-we-text.cg-statement {
-    padding-top: 24px;
+    padding-top: 32px;
 }
 
 @media (max-width: 768px) {
@@ -1196,7 +1196,7 @@ main.project-detail:has(> .project-hero) + main.project-detail .how-might-we-tex
     /* 모바일: 히로 이미지와 큰 문장 사이 간격도 데스크톱과 같은 폭으로 줄여 16px */
     main.project-detail:has(> .project-hero) + main.project-detail .how-might-we-text.cg-statement,
     .header + .cg-row:has(img) + main.project-detail .how-might-we-text.cg-statement {
-        padding-top: 8px;
+        padding-top: 16px;
     }
 }
 
@@ -1274,4 +1274,21 @@ main.project-detail:has(> .project-hero) + main.project-detail:has(+ div > :is(.
     .cg-row:has(> .cg-col:first-child > :is(.section-title-h1, .section-title-p):first-child):has(> .cg-col:not(:first-child) > .section-description:first-child) > .cg-col:first-child + .cg-col {
         margin-top: 44px;
     }
+}
+
+/* 이미지 가로 폭을 4의 배수 픽셀로 내림하고 가운데 정렬 — 칸 폭을 넘지 않고 양옆 여백이 같게 유지 */
+.cg-col img.img-w4 {
+    width: round(down, 100%, 4px);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* National Mustard Museum 페이지 전용 배경색 (다른 페이지는 기존 흰색 유지) */
+body.page-nmm {
+    background-color: #fdfd6a;
+}
+
+/* 본문 문단이 나뉠 때 문단 사이 세로 간격 — Snow Joe 볼드 제목 → 본문 간격(12px)과 동일, 모든 프로젝트 페이지 공통 */
+.cg-col .section-description + .section-description {
+    margin-top: 12px;
 }
