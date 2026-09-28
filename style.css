@@ -1175,3 +1175,51 @@ div:has(> .section-title-h1, > .section-title-p) + .cg-row:has(> .cg-col > .cg-c
 :is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-164 {
     margin-top: 172px;
 }
+
+/* 프로젝트 페이지 맨 위 히로 이미지 바로 다음에 오는 큰 문장(질문/태그라인) 글자 크기
+   — SitEat 기준 40px, 모든 프로젝트 페이지 공통 */
+main.project-detail:has(> .project-hero) + main.project-detail .how-might-we-text.cg-statement,
+.header + .cg-row:has(img) + main.project-detail .how-might-we-text.cg-statement {
+    font-size: 40px;
+    line-height: 56px;
+    /* 줄 사이 간격: 기존 61.6px(44px × 1.4)에서 4px 줄여 4의 배수 56px */
+}
+
+/* 히로 이미지와 그 바로 밑 큰 문장 사이 간격 — SitEat 기준 24px, 모든 프로젝트 페이지 공통 */
+main.project-detail:has(> .project-hero) + main.project-detail .how-might-we-text.cg-statement,
+.header + .cg-row:has(img) + main.project-detail .how-might-we-text.cg-statement {
+    padding-top: 24px;
+}
+
+@media (max-width: 768px) {
+
+    /* 모바일: 히로 이미지와 큰 문장 사이 간격도 데스크톱과 같은 폭으로 줄여 16px */
+    main.project-detail:has(> .project-hero) + main.project-detail .how-might-we-text.cg-statement,
+    .header + .cg-row:has(img) + main.project-detail .how-might-we-text.cg-statement {
+        padding-top: 8px;
+    }
+}
+
+/* 히로 이미지 밑 큰 문장이 쓸 수 있는 가로 폭 = 히로 이미지 폭 (그보다 넓어지지 않음)
+   — 좌우 안쪽 여백 20px씩 (4의 배수), 문장 박스가 히로 이미지와 같은 컨테이너 폭을 그대로 사용. 모든 프로젝트 페이지 공통 */
+main.project-detail:has(> .project-hero) + main.project-detail .how-might-we-text.cg-statement {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/* 히로 이미지 밑 큰 문장 바로 다음에 타이틀이 올 때 두 요소 사이 간격
+   — SitEat 기준 104px(200px에서 48px씩 두 번 줄임): 문장 아래 여백 100px → 4px, 모든 프로젝트 페이지 공통 */
+main.project-detail:has(> .project-hero) + main.project-detail:has(+ div > :is(.section-title-h1, .section-title-p)) .how-might-we-text.cg-statement,
+.header + .cg-row:has(img) + main.project-detail:has(+ div > :is(.section-title-h1, .section-title-p)) .how-might-we-text.cg-statement {
+    padding-bottom: 4px;
+}
+
+@media (max-width: 768px) {
+
+    /* 모바일: 같은 조건에서 문장 아래 여백 0 + 아래 타이틀 위 여백과 겹치도록 -48px (100px → 52px) */
+    main.project-detail:has(> .project-hero) + main.project-detail:has(+ div > :is(.section-title-h1, .section-title-p)) .how-might-we-text.cg-statement,
+    .header + .cg-row:has(img) + main.project-detail:has(+ div > :is(.section-title-h1, .section-title-p)) .how-might-we-text.cg-statement {
+        padding-bottom: 0;
+        margin-bottom: -48px;
+    }
+}
