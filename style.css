@@ -1030,12 +1030,12 @@ body {
 }
 
 /* 타이틀(.section-title-h1 / .section-title-p) 바로 밑에 이미지가 올 때 두 요소 사이 간격
-   — Snow Joe 기준 56px, 모든 프로젝트 페이지 공통 */
+   — 44px (56px에서 12px 줄임), 모든 프로젝트 페이지 공통 */
 div:has(> .section-title-h1, > .section-title-p) + .cg-row:has(> .cg-col:first-child > img:first-child),
 div:has(> .section-title-h1, > .section-title-p) + main.project-detail:has(> section:first-child > img:first-child),
 div:has(> .section-title-h1, > .section-title-p) + .image-stack,
 div:has(> .section-title-h1, > .section-title-p) + .grid-7-3 {
-    margin-top: 56px;
+    margin-top: 44px;
 }
 
 /* 타이틀(.section-title-h1) 바로 아래 세부타이틀(.section-title-p)이 올 때 두 텍스트 사이 간격
@@ -1060,7 +1060,7 @@ div:has(> .section-title-h1, > .section-title-p) + .cg-row > .cg-col > .section-
 }
 
 /* 프로젝트 페이지 맨 위 히로 이미지 바로 밑에 본문 텍스트가 올 때 사이 간격
-   — Snow Joe 기준 56px, 모든 프로젝트 페이지 공통 */
+   — 44px (56px에서 12px 줄임), 모든 프로젝트 페이지 공통 */
 main.project-detail:has(> .project-hero img) + .cg-row:has(> .cg-col > .section-description:first-child) {
     margin-top: 56px;
 }
@@ -1098,82 +1098,82 @@ div:has(> .section-title-h1, > .section-title-p) + .cg-row:has(> .cg-col > .cg-c
 }
 
 /* 위에 다른 소프로젝트 이미지(또는 영상)가 있고 그 밑에 소프로젝트 제목이 올 때 사이 간격
-   — 기존 간격(mt-*)에서 8px 더 넓힘. Snow Joe "Banner Designs in Different Social Media Formats" 기준(100px → 108px),
-     Healthfirst처럼 섹션별로 다르게 잡은 간격도 각각 8px씩 늘어나 위계가 유지됨. 모든 프로젝트 페이지 공통 */
+   — 기존 간격(mt-*)에서 40px 더 넓힘. Snow Joe "Banner Designs in Different Social Media Formats" 기준(100px → 140px),
+     Healthfirst처럼 섹션별로 다르게 잡은 간격도 각각 40px씩 늘어나 위계가 유지됨. 모든 프로젝트 페이지 공통 */
 :is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-12 {
-    margin-top: 20px;
-}
-
-:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-16 {
-    margin-top: 24px;
-}
-
-:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-24 {
-    margin-top: 32px;
-}
-
-:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-32 {
-    margin-top: 40px;
-}
-
-:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-36 {
-    margin-top: 44px;
-}
-
-:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-40 {
-    margin-top: 48px;
-}
-
-:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-44 {
     margin-top: 52px;
 }
 
-:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-52 {
-    margin-top: 60px;
+:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-16 {
+    margin-top: 56px;
 }
 
-:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-68 {
+:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-24 {
+    margin-top: 64px;
+}
+
+:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-32 {
+    margin-top: 72px;
+}
+
+:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-36 {
     margin-top: 76px;
 }
 
-:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-72 {
+:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-40 {
     margin-top: 80px;
 }
 
-:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-92 {
-    margin-top: 100px;
+:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-44 {
+    margin-top: 84px;
 }
 
-:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-100 {
+:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-52 {
+    margin-top: 92px;
+}
+
+:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-68 {
     margin-top: 108px;
 }
 
-:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-108 {
-    margin-top: 116px;
+:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-72 {
+    margin-top: 112px;
 }
 
-:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-112 {
-    margin-top: 120px;
-}
-
-:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-124 {
+:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-92 {
     margin-top: 132px;
 }
 
-:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-136 {
-    margin-top: 144px;
+:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-100 {
+    margin-top: 140px;
 }
 
-:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-140 {
+:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-108 {
     margin-top: 148px;
 }
 
+:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-112 {
+    margin-top: 152px;
+}
+
+:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-124 {
+    margin-top: 164px;
+}
+
+:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-136 {
+    margin-top: 176px;
+}
+
+:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-140 {
+    margin-top: 180px;
+}
+
 :is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-152 {
-    margin-top: 160px;
+    margin-top: 192px;
 }
 
 :is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-164 {
-    margin-top: 172px;
+    margin-top: 204px;
 }
 
 /* 프로젝트 페이지 맨 위 히로 이미지 바로 다음에 오는 큰 문장(질문/태그라인) 글자 크기
@@ -1221,5 +1221,57 @@ main.project-detail:has(> .project-hero) + main.project-detail:has(+ div > :is(.
     .header + .cg-row:has(img) + main.project-detail:has(+ div > :is(.section-title-h1, .section-title-p)) .how-might-we-text.cg-statement {
         padding-bottom: 0;
         margin-bottom: -48px;
+    }
+}
+
+/* 위에 이미지가 있고, 그 밑 행이 "왼쪽 타이틀 + 옆(또는 밑) 이미지" 구성일 때 이미지와 타이틀 사이 간격
+   — SitEat "Solution" 기준, 이미지 → 타이틀 간격(How Might We 위와 동일한 140px), 모든 프로젝트 페이지 공통
+     (같은 행에 본문 텍스트가 있으면 본문 ↔ 이미지 간격 규칙을 따름) */
+.cg-row:has(img) + .cg-row:has(> .cg-col:first-child > :is(.section-title-h1, .section-title-p):first-child):has(img):not(:has(.section-description)) {
+    margin-top: 140px;
+}
+
+/* 왼쪽 타이틀 + 오른쪽 이미지가 같은 행에 있을 때(예: SitEat "Solution")
+   이미지를 타이틀 줄 아래로 내려 타이틀 → 이미지 세로 간격을 44px로 맞춤 (위 타이틀 → 이미지 간격과 동일), 모든 프로젝트 페이지 공통
+   (같은 행에 본문 텍스트가 있으면 본문 규칙을 따름) */
+.cg-row:has(> .cg-col:first-child > :is(.section-title-h1, .section-title-p):first-child):has(> .cg-col:not(:first-child) img):not(:has(.section-description)) {
+    row-gap: 28px;
+    /* 타이틀 아래 여백(16px) + 28px = 44px */
+}
+
+.cg-row:has(> .cg-col:first-child > :is(.section-title-h1, .section-title-p):first-child):has(> .cg-col:not(:first-child) img):not(:has(.section-description)) > .cg-col:first-child {
+    grid-row: 1;
+}
+
+.cg-row:has(> .cg-col:first-child > :is(.section-title-h1, .section-title-p):first-child):has(> .cg-col:not(:first-child) img):not(:has(.section-description)) > .cg-col:not(:first-child) {
+    grid-row: 2;
+}
+
+/* 같은 칸 안에서 타이틀 바로 밑에 이미지가 올 때 간격 44px, 모든 프로젝트 페이지 공통 */
+.cg-col > :is(.section-title-h1, .section-title-p) + img {
+    margin-top: 44px;
+}
+
+/* 왼쪽 타이틀 + 옆 칸 본문 텍스트가 같은 행에 있을 때(예: Safey "Underlying Causes")
+   본문을 타이틀 줄 아래로 내려 타이틀 → 본문 세로 간격을 44px로 맞춤 (타이틀 → 바로 밑 이미지 간격과 동일), 모든 프로젝트 페이지 공통 */
+.cg-row:has(> .cg-col:first-child > :is(.section-title-h1, .section-title-p):first-child):has(> .cg-col:not(:first-child) > .section-description:first-child) {
+    row-gap: 28px;
+    /* 타이틀 아래 여백(16px) + 28px = 44px */
+}
+
+.cg-row:has(> .cg-col:first-child > :is(.section-title-h1, .section-title-p):first-child):has(> .cg-col:not(:first-child) > .section-description:first-child) > .cg-col:first-child {
+    grid-row: 1;
+}
+
+.cg-row:has(> .cg-col:first-child > :is(.section-title-h1, .section-title-p):first-child):has(> .cg-col:not(:first-child) > .section-description:first-child) > .cg-col:not(:first-child) {
+    grid-row: 2;
+}
+
+@media (max-width: 768px) {
+
+    /* 모바일: 왼쪽 타이틀 + 옆 칸(이미지 또는 본문) 행이 세로로 쌓일 때도 타이틀 → 다음 칸 간격 44px 유지 */
+    .cg-row:has(> .cg-col:first-child > :is(.section-title-h1, .section-title-p):first-child):has(> .cg-col:not(:first-child) img):not(:has(.section-description)) > .cg-col:first-child + .cg-col,
+    .cg-row:has(> .cg-col:first-child > :is(.section-title-h1, .section-title-p):first-child):has(> .cg-col:not(:first-child) > .section-description:first-child) > .cg-col:first-child + .cg-col {
+        margin-top: 44px;
     }
 }
