@@ -1030,12 +1030,12 @@ body {
 }
 
 /* 타이틀(.section-title-h1 / .section-title-p) 바로 밑에 이미지가 올 때 두 요소 사이 간격
-   — 44px (56px에서 12px 줄임), 모든 프로젝트 페이지 공통 */
+   — 64px, 모든 프로젝트 페이지 공통 */
 div:has(> .section-title-h1, > .section-title-p) + .cg-row:has(> .cg-col:first-child > img:first-child),
 div:has(> .section-title-h1, > .section-title-p) + main.project-detail:has(> section:first-child > img:first-child),
 div:has(> .section-title-h1, > .section-title-p) + .image-stack,
 div:has(> .section-title-h1, > .section-title-p) + .grid-7-3 {
-    margin-top: 44px;
+    margin-top: 64px;
 }
 
 /* 타이틀(.section-title-h1) 바로 아래 세부타이틀(.section-title-p)이 올 때 두 텍스트 사이 간격
@@ -1060,7 +1060,7 @@ div:has(> .section-title-h1, > .section-title-p) + .cg-row > .cg-col > .section-
 }
 
 /* 프로젝트 페이지 맨 위 히로 이미지 바로 밑에 본문 텍스트가 올 때 사이 간격
-   — 44px (56px에서 12px 줄임), 모든 프로젝트 페이지 공통 */
+   — 64px, 모든 프로젝트 페이지 공통 */
 main.project-detail:has(> .project-hero img) + .cg-row:has(> .cg-col > .section-description:first-child) {
     margin-top: 56px;
 }
@@ -1177,13 +1177,13 @@ div:has(> .section-title-h1, > .section-title-p) + .cg-row:has(> .cg-col > .cg-c
 }
 
 /* 프로젝트 페이지 맨 위 히로 이미지 바로 다음에 오는 큰 문장(질문/태그라인) 글자 크기
-   — SitEat 기준 44px, 모든 프로젝트 페이지 공통 */
+   — SitEat 기준 46px, 모든 프로젝트 페이지 공통 */
 main.project-detail:has(> .project-hero) + main.project-detail .how-might-we-text.cg-statement,
 .header + .cg-row:has(img) + main.project-detail .how-might-we-text.cg-statement {
-    font-size: 44px;
+    font-size: 46px;
     font-weight: 600;
     /* 기존 how-might-we-text 굵기 300(Light)에서 세 단계 굵게 600(Semibold) */
-    line-height: 56px;
+    line-height: 54px;
     /* 줄 사이 간격: 기존 61.6px(44px × 1.4)에서 4px 줄여 4의 배수 56px */
 }
 
@@ -1203,10 +1203,10 @@ main.project-detail:has(> .project-hero) + main.project-detail .how-might-we-tex
 }
 
 /* 히로 이미지 밑 큰 문장이 쓸 수 있는 가로 폭 = 히로 이미지 폭 (그보다 넓어지지 않음)
-   — 좌우 안쪽 여백 20px씩 (4의 배수), 문장 박스가 히로 이미지와 같은 컨테이너 폭을 그대로 사용. 모든 프로젝트 페이지 공통 */
+   — 데스크톱 좌우 안쪽 여백 92px씩 (모바일은 0), 문장 박스가 히로 이미지와 같은 컨테이너 폭을 그대로 사용. 모든 프로젝트 페이지 공통 */
 main.project-detail:has(> .project-hero) + main.project-detail .how-might-we-text.cg-statement {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 92px;
+    padding-right: 92px;
 }
 
 /* 히로 이미지 밑 큰 문장 바로 다음에 타이틀이 올 때 두 요소 사이 간격
@@ -1234,11 +1234,11 @@ main.project-detail:has(> .project-hero) + main.project-detail:has(+ div > :is(.
 }
 
 /* 왼쪽 타이틀 + 오른쪽 이미지가 같은 행에 있을 때(예: SitEat "Solution")
-   이미지를 타이틀 줄 아래로 내려 타이틀 → 이미지 세로 간격을 44px로 맞춤 (위 타이틀 → 이미지 간격과 동일), 모든 프로젝트 페이지 공통
+   이미지를 타이틀 줄 아래로 내려 타이틀 → 이미지 세로 간격을 64px로 맞춤 (위 타이틀 → 이미지 간격과 동일), 모든 프로젝트 페이지 공통
    (같은 행에 본문 텍스트가 있으면 본문 규칙을 따름) */
 .cg-row:has(> .cg-col:first-child > :is(.section-title-h1, .section-title-p):first-child):has(> .cg-col:not(:first-child) img):not(:has(.section-description)) {
-    row-gap: 28px;
-    /* 타이틀 아래 여백(16px) + 28px = 44px */
+    row-gap: 48px;
+    /* 타이틀 아래 여백(16px) + 48px = 64px */
 }
 
 .cg-row:has(> .cg-col:first-child > :is(.section-title-h1, .section-title-p):first-child):has(> .cg-col:not(:first-child) img):not(:has(.section-description)) > .cg-col:first-child {
@@ -1249,9 +1249,9 @@ main.project-detail:has(> .project-hero) + main.project-detail:has(+ div > :is(.
     grid-row: 2;
 }
 
-/* 같은 칸 안에서 타이틀 바로 밑에 이미지가 올 때 간격 44px, 모든 프로젝트 페이지 공통 */
+/* 같은 칸 안에서 타이틀 바로 밑에 이미지가 올 때 간격 64px, 모든 프로젝트 페이지 공통 */
 .cg-col > :is(.section-title-h1, .section-title-p) + img {
-    margin-top: 44px;
+    margin-top: 64px;
 }
 
 /* 왼쪽 타이틀 + 옆 칸 본문 텍스트가 같은 행에 있을 때(예: Safey "Underlying Causes")
@@ -1272,9 +1272,13 @@ main.project-detail:has(> .project-hero) + main.project-detail:has(+ div > :is(.
 @media (max-width: 768px) {
 
     /* 모바일: 왼쪽 타이틀 + 옆 칸(이미지 또는 본문) 행이 세로로 쌓일 때도 타이틀 → 다음 칸 간격 44px 유지 */
-    .cg-row:has(> .cg-col:first-child > :is(.section-title-h1, .section-title-p):first-child):has(> .cg-col:not(:first-child) img):not(:has(.section-description)) > .cg-col:first-child + .cg-col,
     .cg-row:has(> .cg-col:first-child > :is(.section-title-h1, .section-title-p):first-child):has(> .cg-col:not(:first-child) > .section-description:first-child) > .cg-col:first-child + .cg-col {
         margin-top: 44px;
+    }
+
+    /* 모바일: 왼쪽 타이틀 + 옆 칸 이미지 행이 세로로 쌓일 때 타이틀 → 이미지 64px */
+    .cg-row:has(> .cg-col:first-child > :is(.section-title-h1, .section-title-p):first-child):has(> .cg-col:not(:first-child) img):not(:has(.section-description)) > .cg-col:first-child + .cg-col {
+        margin-top: 64px;
     }
 }
 
@@ -1312,29 +1316,16 @@ body.page-nmm {
 }
 
 /* 맨 위 이미지가 일반 이미지 행인 페이지(예: UBRI Connect)의 큰 문장 가로 폭
-   = 위 이미지 폭 이하, 4의 배수로 내림, 가운데 정렬.
-   이미지는 12칸 그리드의 4칸 폭 × 120%(.img-scale-120)이므로 같은 식으로 계산 */
-.header + .cg-row:has(img) + main.project-detail:has(.how-might-we-text.cg-statement) {
-    max-width: none;
-    container-type: inline-size;
-}
-
+   — 다른 페이지(히로 이미지 밑 큰 문장)와 동일: 데스크톱 좌우 안쪽 여백 92px씩, 모바일 0 */
 .header + .cg-row:has(img) + main.project-detail .how-might-we-text.cg-statement {
-    padding-left: 0;
-    padding-right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    width: calc(round(down, calc(((100cqw - 264px) / 3 + 72px) * 1.2 - 2px), 4px) + 80px);
-    /* 이미지 폭 기준(4의 배수 내림)에서 양쪽 40px씩 넓힘 */
+    padding-left: 92px;
+    padding-right: 92px;
 }
 
 @media (max-width: 768px) {
     .header + .cg-row:has(img) + main.project-detail .how-might-we-text.cg-statement {
-        width: min(calc(round(down, 100cqw, 4px) + 80px), round(down, calc(100cqw + 24px), 4px));
-        /* 모바일: 화면 밖으로 잘리지 않도록 페이지 좌우 여백 안쪽까지만 넓힘 */
-        /* 칸보다 넓어지므로 margin: auto 대신 가운데 기준 정렬 */
-        margin-left: 50%;
-        translate: -50% 0;
+        padding-left: 0;
+        padding-right: 0;
     }
 }
 
@@ -1353,5 +1344,14 @@ body.page-nmm {
     .cg-col img.img-inset {
         --inset: 24px;
         --page-pad: 12.6px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* 모바일: 히로 이미지 밑 큰 문장이 히로 이미지 폭 전체를 사용 (좌우 안쪽 여백 0) */
+    main.project-detail:has(> .project-hero) + main.project-detail .how-might-we-text.cg-statement {
+        padding-left: 0;
+        padding-right: 0;
     }
 }
