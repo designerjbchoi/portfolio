@@ -970,7 +970,7 @@ body:has(.header-left) {
    (같은 칸 안에서 줄바꿈으로 떨어진 이미지 / 연속된 이미지 행) */
 .cg-col img.cg-sp,
 .cg-row:has(img) + .cg-row:has(img) {
-    margin-top: 72px;
+    margin-top: 84px;
 }
 
 /* 문장으로만 된 이미지(.text-image)가 위나 아래에 올 때는 기존 간격 유지 */
@@ -978,7 +978,7 @@ body:has(.header-left) {
 .cg-col img + img.text-image.cg-sp,
 .cg-row:has(img.text-image) + .cg-row:has(img),
 .cg-row:has(img) + .cg-row:has(img.text-image) {
-    margin-top: 48px;
+    margin-top: 60px;
 }
 
 .cg-col .section-description {
@@ -1052,11 +1052,15 @@ div:has(> .section-title-h1, > .section-title-p) + .cg-row > .cg-col > .section-
 }
 
 /* 본문 텍스트(.section-description)와 이미지가 세로로 이어질 때 사이 간격 — 모든 프로젝트 페이지 공통 */
-.cg-col .section-description + img,
 .cg-col img + .section-description,
-.cg-row:has(> .cg-col > img:last-child) + .cg-row:has(> .cg-col > .section-description:first-child),
-.cg-row:has(> .cg-col > .section-description:last-child) + .cg-row:has(> .cg-col > img:first-child) {
+.cg-row:has(> .cg-col > img:last-child) + .cg-row:has(> .cg-col > .section-description:first-child) {
     margin-top: 140px;
+}
+
+/* 본문 텍스트 바로 밑에 이미지가 올 때(본문 → 이미지) 사이 간격 — 140px에서 20px 줄인 120px, 모든 프로젝트 페이지 공통 */
+.cg-col .section-description + img,
+.cg-row:has(> .cg-col > .section-description:last-child) + .cg-row:has(> .cg-col > img:first-child) {
+    margin-top: 120px;
 }
 
 /* 프로젝트 페이지 맨 위 히로 이미지 바로 밑에 본문 텍스트가 올 때 사이 간격
@@ -1353,5 +1357,35 @@ body.page-nmm {
     main.project-detail:has(> .project-hero) + main.project-detail .how-might-we-text.cg-statement {
         padding-left: 0;
         padding-right: 0;
+    }
+}
+
+/* 데스크톱: 히로 이미지 밑 큰 문장 바로 다음(또는 큰 문장 없이 히로 이미지 바로 다음, 예: Snow Joe)에 오는 프로젝트 설명(이미지 없이 본문만 있는 행)의
+   좌우 끝을 큰 문장의 좌우 끝과 동일하게 맞춤 — 큰 문장 박스(최대 1120px) - 좌우 여백 92px씩, 모든 프로젝트 페이지 공통 */
+@media (min-width: 769px) {
+    main.project-detail:has(.how-might-we-text.cg-statement) + .cg-row:has(> .cg-col > .section-description):not(:has(img)) > .cg-col,
+    main.project-detail:has(> .project-hero) + .cg-row:has(> .cg-col > .section-description):not(:has(img)) > .cg-col {
+        grid-column: 1 / -1 !important;
+    }
+
+    main.project-detail:has(.how-might-we-text.cg-statement) + .cg-row:has(> .cg-col > .section-description):not(:has(img)) .section-description,
+    main.project-detail:has(> .project-hero) + .cg-row:has(> .cg-col > .section-description):not(:has(img)) .section-description {
+        width: calc(min(1120px, 100%) - 2 * 92px);
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* 히로 이미지 밑 큰 문장 → 바로 밑 프로젝트 설명 사이 세로 간격: 데스크톱 56px / 모바일 40px
+   (문장 아래 여백은 그대로 두고 설명 행의 위 여백으로 조절), 모든 프로젝트 페이지 공통 */
+main.project-detail:has(.how-might-we-text.cg-statement) + .cg-row:has(> .cg-col > .section-description):not(:has(img)) {
+    margin-top: -44px;
+    /* 데스크톱: 문장 아래 여백 100px - 44px = 56px */
+}
+
+@media (max-width: 768px) {
+    main.project-detail:has(.how-might-we-text.cg-statement) + .cg-row:has(> .cg-col > .section-description):not(:has(img)) {
+        margin-top: -8px;
+        /* 모바일: 문장 아래 여백 48px - 8px = 40px */
     }
 }
