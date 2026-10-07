@@ -1030,12 +1030,14 @@ body {
 }
 
 /* 타이틀(.section-title-h1 / .section-title-p) 바로 밑에 이미지가 올 때 두 요소 사이 간격
-   — 64px, 모든 프로젝트 페이지 공통 */
+   — 이미지·동영상 모두 40px, 모든 프로젝트 페이지 공통 */
 div:has(> .section-title-h1, > .section-title-p) + .cg-row:has(> .cg-col:first-child > img:first-child),
 div:has(> .section-title-h1, > .section-title-p) + main.project-detail:has(> section:first-child > img:first-child),
 div:has(> .section-title-h1, > .section-title-p) + .image-stack,
-div:has(> .section-title-h1, > .section-title-p) + .grid-7-3 {
-    margin-top: 64px;
+div:has(> .section-title-h1, > .section-title-p) + .grid-7-3,
+div:has(> .section-title-h1, > .section-title-p) + main.project-detail:has(.video-wrapper),
+div:has(> .section-title-h1, > .section-title-p) + .cg-row:has(> .cg-col:first-child > .video-wrapper:first-child) {
+    margin-top: 40px;
 }
 
 /* 타이틀(.section-title-h1) 바로 아래 세부타이틀(.section-title-p)이 올 때 두 텍스트 사이 간격
@@ -1064,7 +1066,7 @@ div:has(> .section-title-h1, > .section-title-p) + .cg-row > .cg-col > .section-
 }
 
 /* 프로젝트 페이지 맨 위 히로 이미지 바로 밑에 본문 텍스트가 올 때 사이 간격
-   — 64px, 모든 프로젝트 페이지 공통 */
+   — 이미지·동영상 모두 40px, 모든 프로젝트 페이지 공통 */
 main.project-detail:has(> .project-hero img) + .cg-row:has(> .cg-col > .section-description:first-child) {
     margin-top: 56px;
 }
@@ -1238,11 +1240,11 @@ main.project-detail:has(> .project-hero) + main.project-detail:has(+ div > :is(.
 }
 
 /* 왼쪽 타이틀 + 오른쪽 이미지가 같은 행에 있을 때(예: SitEat "Solution")
-   이미지를 타이틀 줄 아래로 내려 타이틀 → 이미지 세로 간격을 64px로 맞춤 (위 타이틀 → 이미지 간격과 동일), 모든 프로젝트 페이지 공통
+   이미지를 타이틀 줄 아래로 내려 타이틀 → 이미지 세로 간격을 40px로 맞춤 (위 타이틀 → 이미지 간격과 동일), 모든 프로젝트 페이지 공통
    (같은 행에 본문 텍스트가 있으면 본문 규칙을 따름) */
 .cg-row:has(> .cg-col:first-child > :is(.section-title-h1, .section-title-p):first-child):has(> .cg-col:not(:first-child) img):not(:has(.section-description)) {
-    row-gap: 48px;
-    /* 타이틀 아래 여백(16px) + 48px = 64px */
+    row-gap: 24px;
+    /* 타이틀 아래 여백(16px) + 24px = 40px */
 }
 
 .cg-row:has(> .cg-col:first-child > :is(.section-title-h1, .section-title-p):first-child):has(> .cg-col:not(:first-child) img):not(:has(.section-description)) > .cg-col:first-child {
@@ -1253,9 +1255,9 @@ main.project-detail:has(> .project-hero) + main.project-detail:has(+ div > :is(.
     grid-row: 2;
 }
 
-/* 같은 칸 안에서 타이틀 바로 밑에 이미지가 올 때 간격 64px, 모든 프로젝트 페이지 공통 */
+/* 같은 칸 안에서 타이틀 바로 밑에 이미지가 올 때 간격 40px, 모든 프로젝트 페이지 공통 */
 .cg-col > :is(.section-title-h1, .section-title-p) + img {
-    margin-top: 64px;
+    margin-top: 40px;
 }
 
 /* 왼쪽 타이틀 + 옆 칸 본문 텍스트가 같은 행에 있을 때(예: Safey "Underlying Causes")
@@ -1280,9 +1282,9 @@ main.project-detail:has(> .project-hero) + main.project-detail:has(+ div > :is(.
         margin-top: 44px;
     }
 
-    /* 모바일: 왼쪽 타이틀 + 옆 칸 이미지 행이 세로로 쌓일 때 타이틀 → 이미지 64px */
+    /* 모바일: 왼쪽 타이틀 + 옆 칸 이미지 행이 세로로 쌓일 때 타이틀 → 이미지 40px */
     .cg-row:has(> .cg-col:first-child > :is(.section-title-h1, .section-title-p):first-child):has(> .cg-col:not(:first-child) img):not(:has(.section-description)) > .cg-col:first-child + .cg-col {
-        margin-top: 64px;
+        margin-top: 40px;
     }
 }
 
