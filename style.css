@@ -1405,3 +1405,25 @@ main.project-detail:has(.how-might-we-text.cg-statement) + .cg-row:has(> .cg-col
 .main-nav .nav-item {
     letter-spacing: 0.5px;
 }
+
+/* 이미지를 원래 크기의 약 120%로 키우고 화면 정중앙 배치 — 양옆 여백은 같고 4의 배수로 반올림, 원본 비율 유지 (데스크톱)
+   --w0: 이미지의 원래 가로 폭(그리드 기준 식), 예: Raging Bull 페이지 */
+@media (min-width: 769px) {
+    .cg-col:has(> img.img-scale-c),
+    main.project-detail:has(> .project-hero > img.img-scale-c) {
+        grid-column: 1 / -1 !important;
+        max-width: none;
+        container-type: inline-size;
+    }
+
+    img.img-scale-c {
+        --page-pad: 66.6px;
+        --m: max(0px, round(nearest, calc((100cqw + 2 * var(--page-pad) - var(--k, 1.2) * var(--w0)) / 2), 4px));
+        /* --k: 확대 배율 (기본 1.2, 이미지별로 style에서 따로 지정 가능) */
+        width: calc(100cqw + 2 * var(--page-pad) - 2 * var(--m));
+        max-width: none;
+        height: auto;
+        margin-left: calc(var(--m) - var(--page-pad));
+        margin-right: 0;
+    }
+}
