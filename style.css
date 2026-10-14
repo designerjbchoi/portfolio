@@ -1391,3 +1391,12 @@ main.project-detail:has(.how-might-we-text.cg-statement) + .cg-row:has(> .cg-col
         /* 모바일: 문장 아래 여백 48px - 8px = 40px */
     }
 }
+
+/* Healthfirst 중간 큰 문장(How Might We / Solution, .how-might-we-text) 좌우 여백 — 데스크톱 176px (4의 배수)
+   히로 이미지 밑 큰 문장(.cg-statement)은 별도 규칙을 따르므로 제외 */
+@media (min-width: 769px) {
+    .how-might-we-text:not(.cg-statement) {
+        padding-left: 176px;
+        padding-right: 176px;
+    }
+}
