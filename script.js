@@ -78,7 +78,19 @@ document.addEventListener('DOMContentLoaded', () => {
         // 3. 제목 생성
         const title = document.createElement('p');
         title.className = 'item-title';
-        title.textContent = item.title;
+        // 프로젝트명은 홈페이지 자기소개 문장(.intro-text)과 같은 폰트로 표기
+        const name = document.createElement('span');
+        name.className = 'item-name';
+        name.textContent = item.title;
+        title.appendChild(name);
+
+        // 프로젝트명 밑에 같은 글씨체로 프로젝트 유형을 표기 (각 프로젝트 페이지의 제목 밑 글씨와 동일)
+        if (item.type) {
+            const type = document.createElement('span');
+            type.className = 'item-type';
+            type.textContent = item.type;
+            title.appendChild(type);
+        }
 
         // 컨테이너에 조립
         gridItem.appendChild(imageBlock);

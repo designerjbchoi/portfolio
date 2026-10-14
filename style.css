@@ -1438,3 +1438,23 @@ img.img-trim-y {
     object-fit: cover;
     object-position: 50% var(--op);
 }
+
+/* 홈페이지 썸네일 밑 프로젝트명 — 자기소개 문장(.intro-text)과 같은 폰트 (모든 화면 폭) */
+.item-title .item-name {
+    display: block;
+    padding-top: 2px;
+    /* 줄 단위로 바꾸면서 프로젝트명이 2px 올라가지 않도록 원래 위치 유지 */
+    font-family: "Courier New", Courier, monospace;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+/* 홈페이지 썸네일 밑 프로젝트 유형 — 13px, Helvetica Neue Thin(200) (모든 화면 폭) */
+.item-title .item-type {
+    display: block;
+    margin-top: 4px;
+    /* 프로젝트명과 유형 사이 간격 — 모든 프로젝트 동일 (글자 상자 기준 4px, 눈에 보이는 간격 약 12.5px) */
+    font-size: 13px;
+    font-weight: 200;
+    letter-spacing: 0.5px;
+}
