@@ -1410,13 +1410,15 @@ main.project-detail:has(.how-might-we-text.cg-statement) + .cg-row:has(> .cg-col
    --w0: 이미지의 원래 가로 폭(그리드 기준 식), 예: Raging Bull 페이지 */
 @media (min-width: 769px) {
     .cg-col:has(> img.img-scale-c),
-    main.project-detail:has(> .project-hero > img.img-scale-c) {
+    main.project-detail:has(> .project-hero > .img-scale-c) {
         grid-column: 1 / -1 !important;
         max-width: none;
         container-type: inline-size;
     }
 
-    img.img-scale-c {
+    /* 이미지를 감싼 히로 박스(div)에도 똑같이 적용 — 예: Destiny 히로 */
+    img.img-scale-c,
+    div.img-scale-c {
         --page-pad: 66.6px;
         --m: max(0px, round(nearest, calc((100cqw + 2 * var(--page-pad) - var(--k, 1.2) * var(--w0)) / 2), 4px));
         /* --k: 확대 배율 (기본 1.2, 이미지별로 style에서 따로 지정 가능) */
