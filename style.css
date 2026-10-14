@@ -1427,3 +1427,12 @@ main.project-detail:has(.how-might-we-text.cg-statement) + .cg-row:has(> .cg-col
         margin-right: 0;
     }
 }
+
+/* 사진 파일 위아래의 흰 배경만 정확히 잘라 내용만 보이게 함 (모든 화면 폭) — 예: Raging Bull 이미지 4장
+   --ar: 흰 배경을 뺀 사진의 가로/세로 비율, --op: 위아래 흰 배경 비율에 맞춘 세로 위치. 사진 내용은 잘리지 않음 */
+img.img-trim-y {
+    aspect-ratio: var(--ar);
+    height: auto;
+    object-fit: cover;
+    object-position: 50% var(--op);
+}
