@@ -1400,3 +1400,8 @@ main.project-detail:has(.how-might-we-text.cg-statement) + .cg-row:has(> .cg-col
         padding-right: 176px;
     }
 }
+
+/* 오른쪽 위 네비게이션(Home / Resume / LinkedIn) 자간 0.5px — 모든 페이지 공통 */
+.main-nav .nav-item {
+    letter-spacing: 0.5px;
+}
