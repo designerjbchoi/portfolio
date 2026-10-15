@@ -23,4 +23,25 @@ document.addEventListener('DOMContentLoaded', () => {
         link.append(image, title);
         grid.append(link);
     });
+
+    const rewindVideos = document.querySelectorAll('.yt-rewind');
+    if (rewindVideos.length) {
+        window.onYouTubeIframeAPIReady = () => rewindVideos.forEach(box => {
+            const videoId = box.dataset.video;
+            const player = new YT.Player(box, {
+                host: 'https://www.youtube-nocookie.com',
+                videoId,
+                playerVars: { rel: 0, playsinline: 1 },
+                events: {
+                    onStateChange: event => {
+                        if (event.data === YT.PlayerState.ENDED) player.cueVideoById(videoId);
+                    }
+                }
+            });
+            player.getIframe().className = 'video-iframe cg-embed';
+        });
+        const api = document.createElement('script');
+        api.src = 'https://www.youtube.com/iframe_api';
+        document.head.append(api);
+    }
 });

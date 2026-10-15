@@ -2,6 +2,7 @@ const portfolioData = [
     { title: 'Healthfirst', type: 'UI/UX, Branding, Marketing', image: 'Healthfirst.jpg', size: 'auto 74.82%' },
     { title: 'Safey', type: 'Product Design, User Research', image: 'Safey.gif', size: 'auto 74.82%', shift: '1.075%' },
     { title: 'Snow Joe', type: 'UI/UX, Marketing, Social Media', image: 'Snow Joe.gif', size: 'auto 74.82%' },
+    { title: 'Louder Healing', type: 'Interactive Design', image: 'Louder Healing.gif', size: 'auto 74.82%' },
     { title: 'SitEat', type: 'Product Design, User Research', image: 'SitEat.gif', ratio: 1, scale: 1.15 },
     { title: 'National Mustard Museum', type: 'Branding', image: 'National Mustard Museum.gif', ratio: 1, scale: 1.20175 },
     { title: 'Icons for PES', type: 'Icon Design, Motion Graphics', image: 'Icons for PES.gif', ratio: 3 / 2, scale: 1.1 },
