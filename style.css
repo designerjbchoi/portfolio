@@ -1,30 +1,37 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+:root {
+    --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --mono: "Courier New", Courier, monospace;
+    --system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --page-pad: 66.6px;
+}
 
-/* 기본 리셋 및 폰트 설정 */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html,
+body {
+    overflow-x: clip;
+}
+
 body {
     background-color: #ffffff;
     color: #000000;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    padding: clamp(16px, calc(10vw - 20px), 80px) 74px 136px 74px;
-    /* Default padding for body */
-    /* 가장 넓을 때 80px, 가장 좁을 때 16px 사이 유동적 변환 */
+    font-family: var(--system);
+    padding: clamp(16px, calc(10vw - 20px), 80px) 74px 136px;
 }
 
-/* 프로젝트 페이지(header-left 존재)에서만 양옆 패딩(마진) 10% 추가 축소 */
 body:has(.header-left) {
-    padding-left: 66.6px;
-    /* Original 74px - 10% = 66.6px */
-    padding-right: 66.6px;
-    /* Original 74px - 10% = 66.6px */
+    padding-left: var(--page-pad);
+    padding-right: var(--page-pad);
 }
 
-/* 헤더 영역 */
+body.page-nmm {
+    background-color: #fdfd6a;
+}
+
 .header {
     display: flex;
     justify-content: space-between;
@@ -32,52 +39,42 @@ body:has(.header-left) {
     margin-bottom: 48px;
 }
 
-/* 프로젝트 페이지: header-left 타이틀이 nav(right)와 같은 세로 위치에 오도록 조정 */
 .header:has(.header-left) {
     align-items: flex-start;
     margin-top: calc(-1 * clamp(8px, calc(5vw - 10px), 40px));
-    /* body padding-top(2x) - nav top(1x) = nav top만큼 위로 올림 */
 }
 
-/* 왼쪽 소개 텍스트 */
 .header-left {
     flex: 1;
-    /* position: fixed 제거 — 스크롤 시 함께 올라감 */
 }
 
-.header-left p {
-    font-family: "Courier New", Courier, monospace;
+.project-meta {
+    font-family: var(--mono);
     font-size: 13px;
     line-height: 1.6;
-    color: #000;
-    margin-top: 0;
 }
 
-/* 프로젝트 헤더 타이틀 (Healthfirst 등) */
+.project-title-label,
+.project-sub-label {
+    display: block;
+    font-family: var(--sans);
+}
+
 .project-title-label {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 27px;
-    /* 22px + 1pt */
     font-weight: 600;
     line-height: 1.2;
-    color: #000;
-    display: block;
     margin-bottom: 4px;
 }
 
-/* 프로젝트 헤더 서브라벨 (UI/UX, Branding 등) */
 .project-sub-label {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
     font-weight: 300;
     line-height: 1.4;
     color: #555;
-    display: block;
     margin-top: 4px;
-    /* 아주 살짝 아래로 내리기 위해 간격 추가 */
 }
 
-/* 중앙 로고 */
 .header-center {
     position: absolute;
     left: 50%;
@@ -86,29 +83,8 @@ body:has(.header-left) {
     justify-content: center;
 }
 
-/* 자기소개글 영역 */
-.intro-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 68px;
-    /* 데스크톱 기준 텍스트의 세로 위치를 134px에서 15% 위로 끌어올린 114px 간격으로 재설정 */
-    margin-bottom: 48px;
-    /* 자기소개글과 아래 썸네일 그리드 사이 간격 */
-}
-
-.intro-text {
-    font-family: "Courier New", Courier, monospace;
-    font-size: 13px;
-    line-height: 1.6;
-    color: #000;
-    text-align: center;
-    width: 455px;
-    /* 모바일/태블릿에서는 기존의 넓은 너비 유지 */
-    max-width: calc(100% - 72px);
-    /* 화면 가장 좁을 때(모바일) 자기소개글 양옆 마진을 기존(18px) 대비 3배(54px)로 늘리기 위한 여백 72px 추가 제한 */
-}
-
-.logo-link {
+.logo-link,
+.logo-img {
     display: block;
 }
 
@@ -116,284 +92,148 @@ body:has(.header-left) {
     width: 72px;
     height: 72px;
     object-fit: contain;
-    display: block;
-    /* 인라인 이미지 아래 글자 하단 여백(약 3px) 제거 — 세로 간격을 4의 배수로 맞추기 위함 */
 }
 
-/* 오른쪽 네비게이션 메뉴 */
 .header-right {
     flex: 1;
     display: flex;
     justify-content: flex-end;
     position: fixed;
     top: clamp(16px, calc(10vw - 20px), 80px);
-    /* 홈화면 기본 top 값 */
     right: 74px;
     z-index: 1000;
 }
 
-/* 홈 화면(Index)에서 메뉴를 상단으로 100% 끌어올림 (로고 최상단 라인과 맞춤) */
-.header:not(:has(.header-left)) .header-right {
+.header-center ~ .header-right {
     height: 72px;
     align-items: flex-start;
     margin-top: -7.4px;
-    /* 현재 위치(-11px)에서 5%(약 3.6px) 정도 아래로 내림 */
     right: 88px;
-    /* 프로젝트 페이지(기본 74px)는 유지하고 홈 화면에서만 안쪽으로 밀어 Snow Joe 썸네일 우측 끝과 정렬 */
 }
 
-/* 프로젝트 페이지만 nav를 50% 위로 올림 (header-left 존재 시) */
-.header:has(.header-left) .header-right {
+.header-left ~ .header-right {
     top: clamp(8px, calc(5vw - 10px), 40px);
-    right: 66.6px;
-    /* Match body padding */
-    /* body 패딩과 동일하게 우측 여백 10% 축소 */
-    justify-content: flex-end;
+    right: var(--page-pad);
     margin-top: 8.4px;
-    /* 왼쪽 타이틀(27px) 텍스트 박스와 시각적으로 완벽한 수직 중앙 정렬을 맞춤 */
 }
 
 .main-nav {
     display: flex;
     gap: 25px;
-    /* 메뉴 사이 간격 */
 }
 
-/* 프로젝트 페이지에서 메뉴 그룹 우측 정렬 강제 */
-.header:has(.header-left) .main-nav {
-    justify-content: flex-end;
-}
-
-.main-nav .nav-item {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+.nav-item {
+    font-family: var(--sans);
     font-size: 13px;
     font-weight: 300;
-    /* 100부터 900 사이의 숫자로 자유롭게 굵기를 조절할 수 있습니다 */
-    text-decoration: none;
+    letter-spacing: 0.5px;
     color: #000;
+    text-decoration: none;
     transition: opacity 0.2s ease;
 }
 
-.main-nav .nav-item:hover {
+.nav-item:hover {
     opacity: 0.6;
 }
 
-/* 포트폴리오 그리드 레이아웃 */
+.intro-container {
+    display: flex;
+    justify-content: center;
+    margin: 68px 0 48px;
+}
+
+.intro-text {
+    font-family: var(--mono);
+    font-size: 13px;
+    line-height: 1.6;
+    text-align: center;
+    width: 455px;
+    max-width: calc(100% - 72px);
+}
+
 .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    /* 3열 그리드 */
-    column-gap: 48px;
-    row-gap: 96px;
-    /* 가로 간격 48px 유지, 세로 간격 94px → 4의 배수 96px로 반올림 */
+    gap: 96px 48px;
 }
 
-/* 개별 포트폴리오 아이템 */
 .portfolio-item {
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
-    width: 100%;
+    color: inherit;
+    text-decoration: none;
 }
 
-/* 이미지 블럭 (회색 배경 플레이스홀더) */
 .image-block {
     width: 100%;
     aspect-ratio: 4 / 3;
-    /* 모든 썸네일을 동일한 크기(비율)로 통일 */
-    background-color: #f0f0f0;
-    /* 회색 블럭 기본 색상 */
     margin-bottom: 20px;
-    /* 나중에 이미지가 들어갈 때 자연스럽게 보이도록 배경 설정 준비 */
-    background-size: contain;
-    background-repeat: no-repeat;
     background-position: center;
-    transition: background-color 0.3s ease;
+    background-repeat: no-repeat;
 }
 
-/* 제목 텍스트 */
 .item-title {
-    font-size: 15px;
-    font-weight: 300;
+    font-family: var(--sans);
     text-align: center;
-    color: #000;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-/* 우측 하단 빨간색 뱃지 (PDF 아이콘 등) */
-.badge {
-    position: absolute;
-    width: 26px;
-    height: 26px;
-    bottom: -4px;
-    /* 타이틀 텍스트와 약간 정렬되도록 */
-    right: -10px;
-    /* 컨테이너 바깥으로 살짝 튀어나오게 */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.item-name {
+    display: block;
+    padding-top: 2px;
+    font-family: var(--mono);
+    font-size: 16px;
+    font-weight: 700;
 }
 
-/* =========================================
-   프로젝트 상세 페이지 (Safey 등) 스타일
-   ========================================= */
-
-.project-meta {
-    font-family: "Courier New", Courier, monospace;
+.item-type {
+    display: block;
+    margin-top: 4px;
     font-size: 13px;
-    line-height: 1.6;
-    color: #000;
+    font-weight: 200;
+    letter-spacing: 0.5px;
 }
 
 .project-detail {
     max-width: 1120px;
-    /* 1200px로 넓이 증가 */
     margin: 0 auto;
-    padding-bottom: 100px;
 }
 
-/* 프로젝트 상세 페이지 내 이미지 가운데 정렬 */
 .project-detail img {
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
 
-.project-hero {
-    margin-bottom: 80px;
-}
-
-.hero-title {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    font-size: 38px;
-    font-weight: bold;
-    line-height: 1.2;
-    margin-top: 40px;
-    letter-spacing: -0.5px;
-}
-
-.project-section {
-    margin-bottom: 100px;
-}
-
 .section-label {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     font-size: 11px;
     font-weight: 700;
     margin-bottom: 24px;
     letter-spacing: 1px;
 }
 
-/* 상세 페이지용 회색 블럭 공통 클래스 */
-.placeholder-block {
-    width: 100%;
-    background-color: #f0f0f0;
-    border-radius: 2px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
 .other-projects-section {
     margin-top: 152px;
+    margin-bottom: 100px;
     padding-top: 80px;
     border-top: 1px solid #eaeaea;
 }
 
-/* =========================================
-   프로젝트 상세 페이지 공통 텍스트 스타일
-   ========================================= */
-
-/* 섹션 내 설명 단락 */
 .section-description {
-    font-family: "Courier New", Courier, monospace;
+    font-family: var(--mono);
     font-size: 13px;
     line-height: 1.8;
-    color: #000;
-    margin-bottom: 32px;
-    max-width: 816px;
-    /* 1200px에 비례하여 넓이 조절 */
 }
 
-/* 섹션 내 소제목 */
-.section-subtitle {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.3px;
-    margin-bottom: 12px;
-    margin-top: 32px;
-    color: #000;
-}
-
-/* Company Intro 텍스트 2포인트 축소 */
-.company-intro {
-    font-size: 11px;
-    /* 기존 13px에서 2px 작게 조절 */
-}
-
-/* 이미지 두 개 나란히 (세로형) */
-.placeholder-row {
-    display: flex;
-    gap: 24px;
-}
-
-.placeholder-row .placeholder-block {
-    flex: 1;
-}
-
-/* 3열 이미지 그리드 */
-.placeholder-grid-3 {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-}
-
-/* 4열 이미지 그리드 */
-.placeholder-grid-4 {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-}
-
-/* 5열 이미지 그리드 */
-.placeholder-grid-5 {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 16px;
-}
-
-/* 그리드 행 사이 간격 */
-.grid-mt {
-    margin-top: 16px;
-}
-
-/* 히어로 하단 개요 텍스트 */
-.hero-overview {
-    font-family: "Courier New", Courier, monospace;
-    font-size: 13px;
-    line-height: 1.8;
-    color: #000;
-    margin-top: 24px;
-    max-width: 816px;
-    /* 1200px에 비례하여 넓이 조절 */
-}
-
-/* =========================================
-   Typography (타이포그래피 및 소제목)
-   ========================================= */
-.section-title-h1 {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+.section-title {
+    font-family: var(--sans);
     font-size: 22px;
     font-weight: 600;
-    color: #000;
 }
 
-.section-title-p {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+.section-subtitle {
     font-size: 18px;
-    font-weight: 600;
-    text-align: left;
     color: #555;
 }
 
@@ -403,10 +243,6 @@ body:has(.header-left) {
     font-size: 17px;
 }
 
-/* =========================================
-   Layout & Components (레이아웃 및 컴포넌트)
-   ========================================= */
-/* Hero Image Container */
 .hero-image-container {
     aspect-ratio: 16 / 9;
     overflow: hidden;
@@ -422,7 +258,6 @@ body:has(.header-left) {
     display: block;
 }
 
-/* Full Bleed Video Section (데스크톱 풀스크린) */
 .video-section-full {
     width: 100vw;
     margin-left: calc(-50vw + 50%);
@@ -432,134 +267,78 @@ body:has(.header-left) {
     position: relative;
     aspect-ratio: 16 / 9;
     overflow: hidden;
-    width: 100%;
 }
 
 .video-iframe {
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
     width: 100%;
     height: 100%;
     pointer-events: none;
 }
 
-/* 7:3 비율 2열 이미지 그리드 */
+.video-iframe.cg-embed {
+    pointer-events: auto;
+}
+
 .grid-7-3 {
     display: flex;
     flex-wrap: wrap;
     gap: 24px;
     align-items: flex-start;
-    width: 100%;
+}
+
+.grid-col-7,
+.grid-col-3 {
+    min-width: 300px;
 }
 
 .grid-col-7 {
     flex: 7;
-    min-width: 300px;
 }
 
 .grid-col-3 {
     flex: 3;
-    min-width: 300px;
-}
-
-/* 세로 이미지 스택 (자동 여백 관리) */
-.image-stack {
-    width: 100%;
 }
 
 .image-stack img {
     width: 100%;
     height: auto;
     display: block;
-    margin-bottom: 40px;
     margin-bottom: 60px;
-    /* 이미지들 사이 간격을 20px 더 넓힘 */
 }
 
 .image-stack img:last-child {
     margin-bottom: 0;
 }
 
-/* 테두리 포인트 */
 .img-border-green {
     border: 0.5px solid #529535;
 }
 
-/* =========================================
-   Utility Classes (여백, 크기, 비율 유틸리티)
-   ========================================= */
-/* Aspect Ratios */
-.ar-16-5 {
-    aspect-ratio: 16 / 5;
+.img-white-bg {
+    border: 0.5px solid #d9d9d9;
 }
 
-.ar-16-6 {
-    aspect-ratio: 16 / 6;
-}
-
-.ar-16-7 {
-    aspect-ratio: 16 / 7;
-}
-
-.ar-16-8 {
-    aspect-ratio: 16 / 8;
-}
-
-.ar-16-9 {
-    aspect-ratio: 16 / 9;
-}
-
-.ar-16-10 {
-    aspect-ratio: 16 / 10;
-}
-
-.ar-16-12 {
-    aspect-ratio: 16 / 12;
-}
-
-.ar-9-16 {
-    aspect-ratio: 9 / 16;
-}
-
-.ar-4-3 {
-    aspect-ratio: 4 / 3;
-}
-
-/* Widths */
-.w-100 {
-    width: 100%;
+.w-100,
+.w-80,
+.w-60 {
     height: auto;
     display: block;
+}
+
+.w-100 {
+    width: 100%;
 }
 
 .w-80 {
     width: 80%;
-    height: auto;
-    display: block;
-}
-
-.w-70 {
-    width: 70%;
-    height: auto;
-    display: block;
 }
 
 .w-60 {
     width: 60%;
-    height: auto;
-    display: block;
 }
 
-.max-w-none {
-    max-width: none;
-}
-
-.mw-260 {
-    max-width: 260px;
-}
-
-/* Spacing - Margins */
 .mt-neg-16 {
     margin-top: -16px;
 }
@@ -588,10 +367,6 @@ body:has(.header-left) {
     margin-top: 40px;
 }
 
-.mt-44 {
-    margin-top: 44px;
-}
-
 .mt-52 {
     margin-top: 52px;
 }
@@ -604,32 +379,20 @@ body:has(.header-left) {
     margin-top: 72px;
 }
 
-.mt-92 {
-    margin-top: 92px;
-}
-
 .mt-100 {
     margin-top: 100px;
 }
 
-.mt-108 {
-    margin-top: 108px;
-}
-
-.mt-112 {
-    margin-top: 112px;
-}
-
-.mt-124 {
-    margin-top: 124px;
-}
-
-.mt-136 {
-    margin-top: 136px;
+.mt-132 {
+    margin-top: 132px;
 }
 
 .mt-140 {
     margin-top: 140px;
+}
+
+.mt-148 {
+    margin-top: 148px;
 }
 
 .mt-152 {
@@ -640,8 +403,20 @@ body:has(.header-left) {
     margin-top: 164px;
 }
 
-.mb-0 {
-    margin-bottom: 0 !important;
+.mt-176 {
+    margin-top: 176px;
+}
+
+.mt-180 {
+    margin-top: 180px;
+}
+
+.mt-192 {
+    margin-top: 192px;
+}
+
+.mt-204 {
+    margin-top: 204px;
 }
 
 .mb-16 {
@@ -650,10 +425,6 @@ body:has(.header-left) {
 
 .mb-32 {
     margin-bottom: 32px;
-}
-
-.mb-40 {
-    margin-bottom: 40px;
 }
 
 .mb-52 {
@@ -672,282 +443,36 @@ body:has(.header-left) {
     margin-bottom: 100px;
 }
 
-/* 강제 적용 마진 (우선순위 문제 해결) */
 .mb-120 {
     margin-bottom: 120px !important;
 }
 
-/* Spacing - Paddings */
-.pt-0 {
-    padding-top: 0 !important;
-}
-
-.pb-0 {
-    padding-bottom: 0 !important;
-}
-
-/* Alignment */
 .text-center {
     text-align: center;
 }
 
-/* How Might We 질문 텍스트 - 데스크톱 기본 여백 */
 .how-might-we-text {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: var(--sans);
     font-size: 30px;
     font-weight: 300;
     text-align: center;
-    color: #000;
     line-height: 1.4;
     padding: 156px;
     margin-top: -160px;
 }
 
-/* 반응형 디자인 지원 */
-@media (min-width: 1025px) {
-
-    /* 데스크톱(3열) 환경에서 같은 가로줄 프로젝트명 세로 위치 일괄 조정 */
-    .portfolio-item:nth-child(1) .item-title,
-    .portfolio-item:nth-child(2) .item-title,
-    .portfolio-item:nth-child(3) .item-title {
-        margin-top: -7%;
-        /* 1번째 가로줄 통일 */
-    }
-
-    .portfolio-item:nth-child(4) .item-title,
-    .portfolio-item:nth-child(5) .item-title,
-    .portfolio-item:nth-child(6) .item-title {
-        margin-top: 3%;
-        /* 2번째 가로줄 통일 */
-    }
-
-    .portfolio-item:nth-child(10) .item-title,
-    .portfolio-item:nth-child(11) .item-title,
-    .portfolio-item:nth-child(12) .item-title {
-        margin-top: 1%;
-        /* 4번째 가로줄 (Destiny 포함) 통일 */
-    }
+.cg-statement {
+    font-size: 46px;
+    font-weight: 600;
+    line-height: 54px;
+    margin-top: 0;
+    padding: 32px 92px 100px;
 }
 
-@media (max-width: 1024px) {
-    .portfolio-grid {
-        grid-template-columns: repeat(2, 1fr);
-        /* 중간 크기 화면에서는 2열 */
-    }
+main:has(+ div > .section-title) .cg-statement {
+    padding-bottom: 24px;
 }
 
-@media (max-width: 1024px) and (min-width: 769px) {
-
-    /* 태블릿(2열) 환경에서 같은 가로줄 프로젝트명 세로 위치 통일 */
-    .portfolio-item:nth-child(1) .item-title,
-    .portfolio-item:nth-child(2) .item-title {
-        margin-top: -7%;
-        /* 1번째 가로줄 */
-    }
-
-    .portfolio-item:nth-child(3) .item-title,
-    .portfolio-item:nth-child(4) .item-title {
-        margin-top: -2.5%;
-        /* 기존 설정이 달랐던 아이템들이 같은 줄로 합쳐지므로 중간값으로 통일 */
-    }
-
-    .portfolio-item:nth-child(5) .item-title,
-    .portfolio-item:nth-child(6) .item-title {
-        margin-top: 3%;
-        /* 3번째 가로줄 */
-    }
-
-    .portfolio-item:nth-child(11) .item-title,
-    .portfolio-item:nth-child(12) .item-title {
-        margin-top: 1%;
-        /* 6번째 가로줄 (Destiny 포함) */
-    }
-}
-
-@media (max-width: 768px) {
-    body {
-        padding: clamp(16px, calc(10vw - 20px), 80px) 14px 92px 14px;
-        /* 모바일 양옆 마진 18px에서 20% 줄인 14px로 변경 */
-    }
-
-    /* 모바일 프로젝트 페이지 양옆 마진도 10% 추가 축소 */
-    body:has(.header-left) {
-        padding-left: 12.6px;
-        /* 14px에서 10% 축소 */
-        padding-right: 12.6px;
-    }
-
-    .header {
-        flex-direction: column;
-        align-items: center;
-        gap: 32px;
-        /* 모바일에서 로고와 메뉴 사이의 간격 (실측 31px → 4의 배수 32px로 반올림) */
-        margin-bottom: 28px;
-        /* 자기소개글과 메뉴 사이의 간격을 24px에서 약간 늘림 */
-    }
-
-    .intro-container {
-        margin-top: 8px;
-        /* 상단 여백을 7px에서 약간 늘림 (총 간격 31px -> 37px로 20% 증가) */
-        margin-bottom: 0;
-        /* 자기소개글과 썸네일 사이 간격 2px에서 약 40% 더 줄임 */
-    }
-
-    .header-left,
-    .header-center,
-    .header-right {
-        text-align: center;
-        justify-content: center;
-        max-width: 100%;
-    }
-
-    .header-right,
-    .header:not(:has(.header-left)) .header-right {
-        /* 모바일에서는 가로폭이 좁아 로고와 겹칠 수 있으므로 상단 고정을 해제합니다 */
-        position: static;
-        height: auto;
-        align-items: center;
-        margin-top: 0;
-        /* 모바일에서는 여백 초기화 */
-    }
-
-    /* 모바일: 프로젝트 페이지 헤더 세로 스택 배치 */
-    .header:has(.header-left) {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-    }
-
-    /* 모바일: nav를 맨 위에 배치 */
-    .header:has(.header-left) .header-right {
-        position: static;
-        order: -1;
-        /* 가장 위 */
-        width: 100%;
-        margin-top: 12px;
-        justify-content: center;
-    }
-
-    /* 모바일: 프로젝트 페이지 메뉴 그룹 가운데 정렬 */
-    .header:has(.header-left) .main-nav {
-        justify-content: center;
-    }
-
-    /* 모바일: 타이틀/서브라벨을 nav 아래에 배치 */
-    .header:has(.header-left) .header-left {
-        position: static;
-        order: 0;
-        width: 100%;
-        text-align: left;
-        margin-top: calc(10%);
-        /* 기존 5%에서 4px 아래로 내림 */
-    }
-
-    /* 모바일: How Might We 텍스트가 양옆 마진 제외하고 화면을 다 쓰도록 패딩 제거 */
-    .how-might-we-text {
-        padding: 0;
-        margin-top: 0;
-        /* 모바일에서 위쪽 텍스트와 겹침 방지 */
-    }
-
-    /* 모바일: 특정 이미지가 양옆 마진 제외하고 화면을 다 쓰도록 100%로 변경 */
-    .full-width-mobile {
-        width: 100% !important;
-    }
-
-    /* 모바일: 풀스크린 비디오가 양옆 마진을 가지도록 강제 풀스크린 해제 */
-    .video-section-full {
-        width: 100% !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-    }
-
-    .header:has(.header-left) .header-left .project-sub-label {
-        margin-top: 4px;
-        /* 모바일에서 서브라벨 간격 고정 */
-    }
-
-    .header-center {
-        position: static;
-        /* 모바일에서는 절대 정렬 해제하고 flex 컬럼에 편입 */
-        transform: none;
-        order: -1;
-        /* 로고가 항상 가장 위에 위치하도록 순서 강제 변경 */
-    }
-
-    .portfolio-grid {
-        grid-template-columns: 1fr;
-        /* 모바일에서는 1열 */
-    }
-
-    /* 모바일 화면에서 Healthfirst 프로젝트명만 10% 위로 올림 */
-    .portfolio-item:nth-child(1) .item-title {
-        margin-top: -6%;
-    }
-
-    /* 모바일 화면에서 Safey 프로젝트명만 5% 위로 올림 */
-    .portfolio-item:nth-child(2) .item-title {
-        margin-top: -6%;
-    }
-
-    /* 모바일 화면에서 Snow Joe 프로젝트명만 5% 위로 올림 */
-    .portfolio-item:nth-child(3) .item-title {
-        margin-top: -6%;
-    }
-
-    /* 모바일 화면에서 SitEat 프로젝트명만 6% 위로 올림 */
-    .portfolio-item:nth-child(4) .item-title {
-        margin-top: -3%;
-    }
-
-    /* 모바일 화면에서 National Mustard Museum 프로젝트명만 10% 아래로 내림 */
-    .portfolio-item:nth-child(5) .item-title {
-        margin-top: 5%;
-    }
-
-    /* 모바일 화면에서 Icons for PES 프로젝트명만 2% 위로 올림 */
-    .portfolio-item:nth-child(6) .item-title {
-        margin-top: -4%;
-    }
-
-    /* 모바일 화면에서 UBRI Connect by Ripple 프로젝트명만 2% 아래로 내림 */
-    .portfolio-item:nth-child(7) .item-title {
-        margin-top: 1%;
-    }
-
-    /* 모바일 화면에서 Otl Aicher 프로젝트명만 3% 위로 올림 */
-    .portfolio-item:nth-child(8) .item-title {
-        margin-top: -3%;
-    }
-
-    /* 모바일 화면에서 Raging Bull 프로젝트명만 2% 위로 올림 */
-    .portfolio-item:nth-child(9) .item-title {
-        margin-top: -3%;
-    }
-
-    /* 모바일 화면에서 Gates of Eden 프로젝트명만 1% 아래로 내림 */
-    .portfolio-item:nth-child(10) .item-title {
-        margin-top: 1%;
-    }
-
-    /* 모바일 화면에서 Typography Zine 프로젝트명만 5% 위로 올림 */
-    .portfolio-item:nth-child(11) .item-title {
-        margin-top: -5%;
-    }
-
-    /* 모바일 화면에서 Destiny 프로젝트명만 3% 아래로 내림 */
-    .portfolio-item:nth-child(12) .item-title {
-        margin-top: 5%;
-    }
-
-    .hero-title {
-        font-size: 28px;
-    }
-}
-/* =========================================
-   Cargo 12-Column Grid (라이브 사이트 레이아웃 재현용 — 신규 추가 클래스)
-   기존 스타일은 변경하지 않고 새로운 클래스만 추가합니다.
-   ========================================= */
 .cg-row {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -966,112 +491,25 @@ body:has(.header-left) {
     display: block;
 }
 
-/* 그래픽 디자인 이미지가 세로로 나열될 때 이미지 사이 간격
-   (같은 칸 안에서 줄바꿈으로 떨어진 이미지 / 연속된 이미지 행) */
 .cg-col img.cg-sp,
-.cg-row:has(img) + .cg-row:has(img) {
+.cg-row:has(img) + .cg-row:has(img),
+.cg-row:has(img) + .cg-row:has(.cg-caption) {
     margin-top: 84px;
 }
 
-/* 문장으로만 된 이미지(.text-image)가 위나 아래에 올 때는 기존 간격 유지 */
-.cg-col img.text-image + img.cg-sp,
-.cg-col img + img.text-image.cg-sp,
-.cg-row:has(img.text-image) + .cg-row:has(img),
-.cg-row:has(img) + .cg-row:has(img.text-image) {
+.cg-row:has(img.text-image) + .cg-row:has(img) {
     margin-top: 60px;
 }
 
-.cg-col .section-description {
-    max-width: none;
-    margin-bottom: 0;
-}
-
-/* DESKTOP / MOBILE 같은 이미지 캡션 */
 .cg-caption {
-    font-family: "Courier New", Courier, monospace;
+    font-family: var(--mono);
     font-size: 13px;
+    font-weight: bold;
     line-height: 1.6;
-    color: #000;
     text-align: center;
     margin-bottom: 20px;
-    /* 이미지 위 설명 텍스트와 그 밑 이미지 사이 간격 (12px + 8px) */
 }
 
-/* 이미지 뒤에 오는 질문/태그라인 (how-might-we-text 보조) */
-.how-might-we-text.cg-statement {
-    margin-top: 0;
-    padding: 100px 156px;
-}
-
-/* YouTube 등 조작 가능한 임베드 영상 */
-.video-iframe.cg-embed {
-    pointer-events: auto;
-}
-
-@media (max-width: 768px) {
-    .cg-row {
-        display: block;
-    }
-
-    .cg-col+.cg-col {
-        margin-top: 24px;
-    }
-
-    .how-might-we-text.cg-statement {
-        padding: 48px 0;
-    }
-}
-
-/* 썸네일 scale 확대(script.js)로 인해 모바일에서 생기는 가로 스크롤 방지
-   — 화면 밖으로 넘친 부분만 잘라내고, 썸네일 크기/위치는 그대로 유지 */
-html,
-body {
-    overflow-x: clip;
-}
-
-/* 타이틀(.section-title-h1 / .section-title-p) 바로 밑에 이미지가 올 때 두 요소 사이 간격
-   — 이미지·동영상 모두 40px, 모든 프로젝트 페이지 공통 */
-div:has(> .section-title-h1, > .section-title-p) + .cg-row:has(> .cg-col:first-child > img:first-child),
-div:has(> .section-title-h1, > .section-title-p) + main.project-detail:has(> section:first-child > img:first-child),
-div:has(> .section-title-h1, > .section-title-p) + .image-stack,
-div:has(> .section-title-h1, > .section-title-p) + .grid-7-3,
-div:has(> .section-title-h1, > .section-title-p) + main.project-detail:has(.video-wrapper),
-div:has(> .section-title-h1, > .section-title-p) + .cg-row:has(> .cg-col:first-child > .video-wrapper:first-child) {
-    margin-top: 40px;
-}
-
-/* 타이틀(.section-title-h1) 바로 아래 세부타이틀(.section-title-p)이 올 때 두 텍스트 사이 간격
-   — Healthfirst "Other Brand Design Projects" 기준(100px의 1/3, 4의 배수로 반올림), 모든 프로젝트 페이지 공통 */
-div:has(> .section-title-h1) + div > .section-title-p {
-    margin-top: 32px;
-}
-
-/* 왼쪽 타이틀 옆(같은 행) 또는 타이틀 바로 밑에 오는 본문 텍스트 — 18px
-   — Safey "Challenges" 기준, 모든 프로젝트 페이지 공통 */
-.cg-row:has(> .cg-col > .section-title-h1, > .cg-col > .section-title-p) .section-description,
-div:has(> .section-title-h1, > .section-title-p) + .cg-row > .cg-col > .section-description:first-child {
-    font-size: 18px;
-}
-
-/* 본문 텍스트(.section-description)와 이미지가 세로로 이어질 때 사이 간격 — 모든 프로젝트 페이지 공통 */
-.cg-col img + .section-description,
-.cg-row:has(> .cg-col > img:last-child) + .cg-row:has(> .cg-col > .section-description:first-child) {
-    margin-top: 140px;
-}
-
-/* 본문 텍스트 바로 밑에 이미지가 올 때(본문 → 이미지) 사이 간격 — 140px에서 20px 줄인 120px, 모든 프로젝트 페이지 공통 */
-.cg-col .section-description + img,
-.cg-row:has(> .cg-col > .section-description:last-child) + .cg-row:has(> .cg-col > img:first-child) {
-    margin-top: 120px;
-}
-
-/* 프로젝트 페이지 맨 위 히로 이미지 바로 밑에 본문 텍스트가 올 때 사이 간격
-   — 이미지·동영상 모두 40px, 모든 프로젝트 페이지 공통 */
-main.project-detail:has(> .project-hero img) + .cg-row:has(> .cg-col > .section-description:first-child) {
-    margin-top: 56px;
-}
-
-/* 본문 맨 위 굵은 타이틀(.desc-title)과 그 밑 본문 사이 한 줄 띄우기 — 모든 프로젝트 페이지 공통 */
 .section-description .desc-title {
     display: block;
     margin-bottom: 12px;
@@ -1081,357 +519,76 @@ main.project-detail:has(> .project-hero img) + .cg-row:has(> .cg-col > .section-
     display: none;
 }
 
-/* 이미지 위에 제목처럼 붙는 한두 단어 본문 텍스트(DESKTOP / MOBILE 등)를 굵게 — 모든 프로젝트 페이지 공통 */
-.cg-caption {
-    font-weight: bold;
+.section-description + .section-description {
+    margin-top: 12px;
 }
 
-/* 큰 제목 바로 밑에 이미지 설명 텍스트(.cg-caption, 예: DESKTOP / MOBILE)가 올 때 사이 간격
-   — Snow Joe "TV Offer Web Page Design" 기준 40px, 모든 프로젝트 페이지 공통 */
-div:has(> .section-title-h1, > .section-title-p) + .cg-row:has(> .cg-col > .cg-caption:first-child) {
+div:has(> .section-title) + :is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe, .cg-caption),
+.cg-col > .section-title + img {
     margin-top: 40px;
 }
 
-/* 위에 이미지가 있고 그 밑에 이미지 설명 텍스트(.cg-caption, 예: DESKTOP / MOBILE)가 올 때 사이 간격
-   — Snow Joe 기준(72px + 12px), 모든 프로젝트 페이지 공통 */
-.cg-row:has(img) + .cg-row:has(> .cg-col > .cg-caption:first-child) {
-    margin-top: 84px;
+div:has(> .section-title) + div > .section-subtitle {
+    margin-top: 32px;
 }
 
-/* 흰색 배경이 포함된 이미지(.img-white-bg) — 사이트 흰 배경과 구분되도록 연한 회색 0.5px 테두리, 모든 프로젝트 페이지 공통 */
-.img-white-bg {
-    border: 0.5px solid #d9d9d9;
+.cg-row:has(.section-title) .section-description {
+    font-size: 18px;
 }
 
-/* 위에 다른 소프로젝트 이미지(또는 영상)가 있고 그 밑에 소프로젝트 제목이 올 때 사이 간격
-   — 기존 간격(mt-*)에서 40px 더 넓힘. Snow Joe "Banner Designs in Different Social Media Formats" 기준(100px → 140px),
-     Healthfirst처럼 섹션별로 다르게 잡은 간격도 각각 40px씩 늘어나 위계가 유지됨. 모든 프로젝트 페이지 공통 */
-:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-12 {
-    margin-top: 52px;
-}
-
-:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-16 {
+main:has(.project-hero) + .cg-row {
     margin-top: 56px;
 }
 
-:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-24 {
-    margin-top: 64px;
-}
-
-:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-32 {
-    margin-top: 72px;
-}
-
-:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-36 {
-    margin-top: 76px;
-}
-
-:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-40 {
-    margin-top: 80px;
-}
-
-:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-44 {
-    margin-top: 84px;
-}
-
-:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-52 {
-    margin-top: 92px;
-}
-
-:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-68 {
-    margin-top: 108px;
-}
-
-:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-72 {
-    margin-top: 112px;
-}
-
-:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-92 {
-    margin-top: 132px;
-}
-
-:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-100 {
+.cg-row:has(img) + .cg-row:has(.section-description),
+.cg-row:has(img) + .cg-row:has(> .cg-col > .section-title):has(img):not(:has(.section-description)) {
     margin-top: 140px;
 }
 
-:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-108 {
-    margin-top: 148px;
+.section-description + img,
+.cg-row:has(.section-description:last-child) + .cg-row:has(> .cg-col > img:first-child) {
+    margin-top: 120px;
 }
 
-:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-112 {
-    margin-top: 152px;
+main:has(.cg-statement) + .cg-row:not(:has(img)) {
+    margin-top: -44px;
 }
 
-:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-124 {
-    margin-top: 164px;
-}
-
-:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-136 {
-    margin-top: 176px;
-}
-
-:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-140 {
-    margin-top: 180px;
-}
-
-:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-152 {
-    margin-top: 192px;
-}
-
-:is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe) + div > :is(.section-title-h1, .section-title-p).mt-164 {
-    margin-top: 204px;
-}
-
-/* 프로젝트 페이지 맨 위 히로 이미지 바로 다음에 오는 큰 문장(질문/태그라인) 글자 크기
-   — SitEat 기준 46px, 모든 프로젝트 페이지 공통 */
-main.project-detail:has(> .project-hero) + main.project-detail .how-might-we-text.cg-statement,
-.header + .cg-row:has(img) + main.project-detail .how-might-we-text.cg-statement {
-    font-size: 46px;
-    font-weight: 600;
-    /* 기존 how-might-we-text 굵기 300(Light)에서 세 단계 굵게 600(Semibold) */
-    line-height: 54px;
-    /* 줄 사이 간격: 기존 61.6px(44px × 1.4)에서 4px 줄여 4의 배수 56px */
-}
-
-/* 히로 이미지와 그 바로 밑 큰 문장 사이 간격 — SitEat 기준 32px, 모든 프로젝트 페이지 공통 */
-main.project-detail:has(> .project-hero) + main.project-detail .how-might-we-text.cg-statement,
-.header + .cg-row:has(img) + main.project-detail .how-might-we-text.cg-statement {
-    padding-top: 32px;
-}
-
-@media (max-width: 768px) {
-
-    /* 모바일: 히로 이미지와 큰 문장 사이 간격도 데스크톱과 같은 폭으로 줄여 16px */
-    main.project-detail:has(> .project-hero) + main.project-detail .how-might-we-text.cg-statement,
-    .header + .cg-row:has(img) + main.project-detail .how-might-we-text.cg-statement {
-        padding-top: 16px;
-    }
-}
-
-/* 히로 이미지 밑 큰 문장이 쓸 수 있는 가로 폭 = 히로 이미지 폭 (그보다 넓어지지 않음)
-   — 데스크톱 좌우 안쪽 여백 92px씩 (모바일은 0), 문장 박스가 히로 이미지와 같은 컨테이너 폭을 그대로 사용. 모든 프로젝트 페이지 공통 */
-main.project-detail:has(> .project-hero) + main.project-detail .how-might-we-text.cg-statement {
-    padding-left: 92px;
-    padding-right: 92px;
-}
-
-/* 히로 이미지 밑 큰 문장 바로 다음에 타이틀이 올 때 두 요소 사이 간격
-   — 124px (104px + 20px): 문장 아래 여백 24px + 타이틀 위 여백 100px, 모든 프로젝트 페이지 공통 */
-main.project-detail:has(> .project-hero) + main.project-detail:has(+ div > :is(.section-title-h1, .section-title-p)) .how-might-we-text.cg-statement,
-.header + .cg-row:has(img) + main.project-detail:has(+ div > :is(.section-title-h1, .section-title-p)) .how-might-we-text.cg-statement {
-    padding-bottom: 24px;
-}
-
-@media (max-width: 768px) {
-
-    /* 모바일: 같은 조건에서 문장 아래 여백 0 + 아래 타이틀 위 여백과 겹치도록 -28px (100px → 72px) */
-    main.project-detail:has(> .project-hero) + main.project-detail:has(+ div > :is(.section-title-h1, .section-title-p)) .how-might-we-text.cg-statement,
-    .header + .cg-row:has(img) + main.project-detail:has(+ div > :is(.section-title-h1, .section-title-p)) .how-might-we-text.cg-statement {
-        padding-bottom: 0;
-        margin-bottom: -28px;
-    }
-}
-
-/* 위에 이미지가 있고, 그 밑 행이 "왼쪽 타이틀 + 옆(또는 밑) 이미지" 구성일 때 이미지와 타이틀 사이 간격
-   — SitEat "Solution" 기준, 이미지 → 타이틀 간격(How Might We 위와 동일한 140px), 모든 프로젝트 페이지 공통
-     (같은 행에 본문 텍스트가 있으면 본문 ↔ 이미지 간격 규칙을 따름) */
-.cg-row:has(img) + .cg-row:has(> .cg-col:first-child > :is(.section-title-h1, .section-title-p):first-child):has(img):not(:has(.section-description)) {
-    margin-top: 140px;
-}
-
-/* 왼쪽 타이틀 + 오른쪽 이미지가 같은 행에 있을 때(예: SitEat "Solution")
-   이미지를 타이틀 줄 아래로 내려 타이틀 → 이미지 세로 간격을 40px로 맞춤 (위 타이틀 → 이미지 간격과 동일), 모든 프로젝트 페이지 공통
-   (같은 행에 본문 텍스트가 있으면 본문 규칙을 따름) */
-.cg-row:has(> .cg-col:first-child > :is(.section-title-h1, .section-title-p):first-child):has(> .cg-col:not(:first-child) img):not(:has(.section-description)) {
+.cg-row:has(> .cg-col > .section-title):has(> .cg-col + .cg-col) {
     row-gap: 24px;
-    /* 타이틀 아래 여백(16px) + 24px = 40px */
 }
 
-.cg-row:has(> .cg-col:first-child > :is(.section-title-h1, .section-title-p):first-child):has(> .cg-col:not(:first-child) img):not(:has(.section-description)) > .cg-col:first-child {
-    grid-row: 1;
-}
-
-.cg-row:has(> .cg-col:first-child > :is(.section-title-h1, .section-title-p):first-child):has(> .cg-col:not(:first-child) img):not(:has(.section-description)) > .cg-col:not(:first-child) {
-    grid-row: 2;
-}
-
-/* 같은 칸 안에서 타이틀 바로 밑에 이미지가 올 때 간격 40px, 모든 프로젝트 페이지 공통 */
-.cg-col > :is(.section-title-h1, .section-title-p) + img {
-    margin-top: 40px;
-}
-
-/* 왼쪽 타이틀 + 옆 칸 본문 텍스트가 같은 행에 있을 때(예: Safey "Underlying Causes")
-   본문을 타이틀 줄 아래로 내려 타이틀 → 본문 세로 간격을 44px로 맞춤 (타이틀 → 바로 밑 이미지 간격과 동일), 모든 프로젝트 페이지 공통 */
-.cg-row:has(> .cg-col:first-child > :is(.section-title-h1, .section-title-p):first-child):has(> .cg-col:not(:first-child) > .section-description:first-child) {
+.cg-row:has(> .cg-col > .section-title):has(> .cg-col + .cg-col > .section-description) {
     row-gap: 28px;
-    /* 타이틀 아래 여백(16px) + 28px = 44px */
 }
 
-.cg-row:has(> .cg-col:first-child > :is(.section-title-h1, .section-title-p):first-child):has(> .cg-col:not(:first-child) > .section-description:first-child) > .cg-col:first-child {
-    grid-row: 1;
-}
-
-.cg-row:has(> .cg-col:first-child > :is(.section-title-h1, .section-title-p):first-child):has(> .cg-col:not(:first-child) > .section-description:first-child) > .cg-col:not(:first-child) {
+.cg-row:has(> .cg-col > .section-title):has(> .cg-col + .cg-col) > .cg-col {
     grid-row: 2;
 }
 
-@media (max-width: 768px) {
-
-    /* 모바일: 왼쪽 타이틀 + 옆 칸(이미지 또는 본문) 행이 세로로 쌓일 때도 타이틀 → 다음 칸 간격 44px 유지 */
-    .cg-row:has(> .cg-col:first-child > :is(.section-title-h1, .section-title-p):first-child):has(> .cg-col:not(:first-child) > .section-description:first-child) > .cg-col:first-child + .cg-col {
-        margin-top: 44px;
-    }
-
-    /* 모바일: 왼쪽 타이틀 + 옆 칸 이미지 행이 세로로 쌓일 때 타이틀 → 이미지 40px */
-    .cg-row:has(> .cg-col:first-child > :is(.section-title-h1, .section-title-p):first-child):has(> .cg-col:not(:first-child) img):not(:has(.section-description)) > .cg-col:first-child + .cg-col {
-        margin-top: 40px;
-    }
+.cg-row:has(> .cg-col > .section-title):has(> .cg-col + .cg-col) > .cg-col:first-child {
+    grid-row: 1;
 }
 
-/* 이미지 가로 폭을 4의 배수 픽셀로 내림하고 가운데 정렬 — 칸 폭을 넘지 않고 양옆 여백이 같게 유지 */
 .cg-col img.img-w4 {
     width: round(down, 100%, 4px);
     margin-left: auto;
     margin-right: auto;
 }
 
-/* National Mustard Museum 페이지 전용 배경색 (다른 페이지는 기존 흰색 유지) */
-body.page-nmm {
-    background-color: #fdfd6a;
-}
-
-/* 본문 문단이 나뉠 때 문단 사이 세로 간격 — Snow Joe 볼드 제목 → 본문 간격(12px)과 동일, 모든 프로젝트 페이지 공통 */
-.cg-col .section-description + .section-description {
-    margin-top: 12px;
-}
-
-/* 이미지를 칸 폭 대비 120%로 키우고(가운데 정렬 유지), 세로 길이를 4의 배수로 반올림 — 데스크톱/태블릿 전용
-   --img-ratio: 이미지 원본 세로/가로 비율 (예: UBRI 히로 이미지) */
-.cg-col:has(> img.img-scale-120) {
-    container-type: inline-size;
-}
-
-@media (min-width: 769px) {
-    .cg-col > img.img-scale-120 {
-        width: auto;
-        max-width: none;
-        height: round(nearest, calc(120cqw * var(--img-ratio)), 4px);
-        margin-left: 50%;
-        translate: -50% 0;
-    }
-}
-
-/* 맨 위 이미지가 일반 이미지 행인 페이지(예: UBRI Connect)의 큰 문장 가로 폭
-   — 다른 페이지(히로 이미지 밑 큰 문장)와 동일: 데스크톱 좌우 안쪽 여백 92px씩, 모바일 0 */
-.header + .cg-row:has(img) + main.project-detail .how-might-we-text.cg-statement {
-    padding-left: 92px;
-    padding-right: 92px;
-}
-
-@media (max-width: 768px) {
-    .header + .cg-row:has(img) + main.project-detail .how-might-we-text.cg-statement {
-        padding-left: 0;
-        padding-right: 0;
-    }
-}
-
-/* 전체 폭 이미지의 양옆 여백을 화면 끝 기준 4의 배수로 맞춤 (화면 끝에서 24px, 원본 비율 유지), 가운데 정렬
-   — 페이지 좌우 여백(66.6px / 12.6px)과의 차이만큼 이미지 좌우를 넓히거나 좁힘 */
 .cg-col img.img-inset {
-    --inset: 24px;
-    --page-pad: 66.6px;
-    width: calc(100% - 2 * (var(--inset) - var(--page-pad)));
+    width: calc(100% + 2 * (var(--page-pad) - 24px));
     max-width: none;
-    margin-left: calc(var(--inset) - var(--page-pad));
-    margin-right: calc(var(--inset) - var(--page-pad));
+    margin-left: calc(24px - var(--page-pad));
+    margin-right: calc(24px - var(--page-pad));
 }
 
-@media (max-width: 768px) {
-    .cg-col img.img-inset {
-        --inset: 24px;
-        --page-pad: 12.6px;
-    }
+.cg-col img.img-bleed {
+    width: 100vw;
+    max-width: none;
+    margin-left: calc(50% - 50vw);
 }
 
-@media (max-width: 768px) {
-
-    /* 모바일: 히로 이미지 밑 큰 문장이 히로 이미지 폭 전체를 사용 (좌우 안쪽 여백 0) */
-    main.project-detail:has(> .project-hero) + main.project-detail .how-might-we-text.cg-statement {
-        padding-left: 0;
-        padding-right: 0;
-    }
-}
-
-/* 데스크톱: 히로 이미지 밑 큰 문장 바로 다음(또는 큰 문장 없이 히로 이미지 바로 다음, 예: Snow Joe)에 오는 프로젝트 설명(이미지 없이 본문만 있는 행)의
-   좌우 끝을 큰 문장의 좌우 끝과 동일하게 맞춤 — 큰 문장 박스(최대 1120px) - 좌우 여백 92px씩, 모든 프로젝트 페이지 공통 */
-@media (min-width: 769px) {
-    main.project-detail:has(.how-might-we-text.cg-statement) + .cg-row:has(> .cg-col > .section-description):not(:has(img)) > .cg-col,
-    main.project-detail:has(> .project-hero) + .cg-row:has(> .cg-col > .section-description):not(:has(img)) > .cg-col {
-        grid-column: 1 / -1 !important;
-    }
-
-    main.project-detail:has(.how-might-we-text.cg-statement) + .cg-row:has(> .cg-col > .section-description):not(:has(img)) .section-description,
-    main.project-detail:has(> .project-hero) + .cg-row:has(> .cg-col > .section-description):not(:has(img)) .section-description {
-        width: calc(min(1120px, 100%) - 2 * 92px);
-        margin-left: auto;
-        margin-right: auto;
-    }
-}
-
-/* 히로 이미지 밑 큰 문장 → 바로 밑 프로젝트 설명 사이 세로 간격: 데스크톱 56px / 모바일 40px
-   (문장 아래 여백은 그대로 두고 설명 행의 위 여백으로 조절), 모든 프로젝트 페이지 공통 */
-main.project-detail:has(.how-might-we-text.cg-statement) + .cg-row:has(> .cg-col > .section-description):not(:has(img)) {
-    margin-top: -44px;
-    /* 데스크톱: 문장 아래 여백 100px - 44px = 56px */
-}
-
-@media (max-width: 768px) {
-    main.project-detail:has(.how-might-we-text.cg-statement) + .cg-row:has(> .cg-col > .section-description):not(:has(img)) {
-        margin-top: -8px;
-        /* 모바일: 문장 아래 여백 48px - 8px = 40px */
-    }
-}
-
-/* Healthfirst 중간 큰 문장(How Might We / Solution, .how-might-we-text) 좌우 여백 — 데스크톱 176px (4의 배수)
-   히로 이미지 밑 큰 문장(.cg-statement)은 별도 규칙을 따르므로 제외 */
-@media (min-width: 769px) {
-    .how-might-we-text:not(.cg-statement) {
-        padding-left: 176px;
-        padding-right: 176px;
-    }
-}
-
-/* 오른쪽 위 네비게이션(Home / Resume / LinkedIn) 자간 0.5px — 모든 페이지 공통 */
-.main-nav .nav-item {
-    letter-spacing: 0.5px;
-}
-
-/* 이미지를 원래 크기의 약 120%로 키우고 화면 정중앙 배치 — 양옆 여백은 같고 4의 배수로 반올림, 원본 비율 유지 (데스크톱)
-   --w0: 이미지의 원래 가로 폭(그리드 기준 식), 예: Raging Bull 페이지 */
-@media (min-width: 769px) {
-    .cg-col:has(> img.img-scale-c),
-    main.project-detail:has(> .project-hero > .img-scale-c) {
-        grid-column: 1 / -1 !important;
-        max-width: none;
-        container-type: inline-size;
-    }
-
-    /* 이미지를 감싼 히로 박스(div)에도 똑같이 적용 — 예: Destiny 히로 */
-    img.img-scale-c,
-    div.img-scale-c {
-        --page-pad: 66.6px;
-        --m: max(0px, round(nearest, calc((100cqw + 2 * var(--page-pad) - var(--k, 1.2) * var(--w0)) / 2), 4px));
-        /* --k: 확대 배율 (기본 1.2, 이미지별로 style에서 따로 지정 가능) */
-        width: calc(100cqw + 2 * var(--page-pad) - 2 * var(--m));
-        max-width: none;
-        height: auto;
-        margin-left: calc(var(--m) - var(--page-pad));
-        margin-right: 0;
-    }
-}
-
-/* 사진 파일 위아래의 흰 배경만 정확히 잘라 내용만 보이게 함 (모든 화면 폭) — 예: Raging Bull 이미지 4장
-   --ar: 흰 배경을 뺀 사진의 가로/세로 비율, --op: 위아래 흰 배경 비율에 맞춘 세로 위치. 사진 내용은 잘리지 않음 */
 img.img-trim-y {
     aspect-ratio: var(--ar);
     height: auto;
@@ -1439,22 +596,227 @@ img.img-trim-y {
     object-position: 50% var(--op);
 }
 
-/* 홈페이지 썸네일 밑 프로젝트명 — 자기소개 문장(.intro-text)과 같은 폰트 (모든 화면 폭) */
-.item-title .item-name {
-    display: block;
-    padding-top: 2px;
-    /* 줄 단위로 바꾸면서 프로젝트명이 2px 올라가지 않도록 원래 위치 유지 */
-    font-family: "Courier New", Courier, monospace;
-    font-size: 16px;
-    font-weight: 700;
+.cg-col:has(> img.img-scale-120) {
+    container-type: inline-size;
 }
 
-/* 홈페이지 썸네일 밑 프로젝트 유형 — 13px, Helvetica Neue Thin(200) (모든 화면 폭) */
-.item-title .item-type {
-    display: block;
-    margin-top: 4px;
-    /* 프로젝트명과 유형 사이 간격 — 모든 프로젝트 동일 (글자 상자 기준 4px, 눈에 보이는 간격 약 12.5px) */
-    font-size: 13px;
-    font-weight: 200;
-    letter-spacing: 0.5px;
+@media (min-width: 769px) {
+    .how-might-we-text:not(.cg-statement) {
+        padding-left: 176px;
+        padding-right: 176px;
+    }
+
+    main + .cg-row:not(:has(img)) > .cg-col {
+        grid-column: 1 / -1 !important;
+    }
+
+    main + .cg-row:not(:has(img)) .section-description {
+        width: calc(min(1120px, 100%) - 184px);
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .cg-col > img.img-scale-120 {
+        width: auto;
+        max-width: none;
+        height: round(nearest, calc(120cqw * var(--img-ratio)), 4px);
+        margin-left: 50%;
+        translate: -50% 0;
+    }
+
+    .cg-col:has(> .img-scale-c),
+    main:has(> .project-hero > .img-scale-c) {
+        grid-column: 1 / -1 !important;
+        max-width: none;
+        container-type: inline-size;
+    }
+
+    :is(img, div).img-scale-c {
+        --w0: calc((100cqw - 264px) / 12 * var(--span, 8) + (var(--span, 8) - 1) * 24px);
+        --m: max(0px, round(nearest, calc((100cqw + 2 * var(--page-pad) - var(--k, 1.2) * var(--w0)) / 2), 4px));
+        width: calc(100cqw + 2 * var(--page-pad) - 2 * var(--m));
+        max-width: none;
+        height: auto;
+        margin-left: calc(var(--m) - var(--page-pad));
+        margin-right: 0;
+    }
+    .project-hero > .img-scale-c {
+        --w0: min(1120px, 100cqw);
+    }
+}
+
+@media (min-width: 1025px) {
+    .portfolio-item:nth-child(-n + 3) .item-title {
+        margin-top: -7%;
+    }
+
+    .portfolio-item:nth-child(n + 4):nth-child(-n + 6) .item-title {
+        margin-top: 3%;
+    }
+
+    .portfolio-item:nth-child(n + 10) .item-title {
+        margin-top: 1%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+    .portfolio-item:nth-child(-n + 2) .item-title {
+        margin-top: -7%;
+    }
+
+    .portfolio-item:nth-child(3) .item-title,
+    .portfolio-item:nth-child(4) .item-title {
+        margin-top: -2.5%;
+    }
+
+    .portfolio-item:nth-child(5) .item-title,
+    .portfolio-item:nth-child(6) .item-title {
+        margin-top: 3%;
+    }
+
+    .portfolio-item:nth-child(n + 11) .item-title {
+        margin-top: 1%;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --page-pad: 12.6px;
+    }
+
+    body {
+        padding: clamp(16px, calc(10vw - 20px), 80px) 14px 92px;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: center;
+        gap: 32px;
+        margin-bottom: 28px;
+    }
+
+    .header:has(.header-left) {
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .header-left,
+    .header-center,
+    .header-right {
+        text-align: center;
+        justify-content: center;
+        max-width: 100%;
+    }
+
+    .header-center {
+        position: static;
+        transform: none;
+        order: -1;
+    }
+
+    .header-right,
+    .header-center ~ .header-right {
+        position: static;
+        height: auto;
+        align-items: center;
+        margin-top: 0;
+    }
+
+    .header-left ~ .header-right {
+        order: -1;
+        width: 100%;
+        margin-top: 12px;
+    }
+
+    .header-left {
+        width: 100%;
+        text-align: left;
+        margin-top: 10%;
+    }
+
+    .intro-container {
+        margin-top: 8px;
+        margin-bottom: 0;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .portfolio-item:nth-child(-n + 3) .item-title {
+        margin-top: -6%;
+    }
+
+    .portfolio-item:nth-child(4) .item-title,
+    .portfolio-item:nth-child(8) .item-title,
+    .portfolio-item:nth-child(9) .item-title {
+        margin-top: -3%;
+    }
+
+    .portfolio-item:nth-child(5) .item-title,
+    .portfolio-item:nth-child(12) .item-title {
+        margin-top: 5%;
+    }
+
+    .portfolio-item:nth-child(6) .item-title {
+        margin-top: -4%;
+    }
+
+    .portfolio-item:nth-child(7) .item-title,
+    .portfolio-item:nth-child(10) .item-title {
+        margin-top: 1%;
+    }
+
+    .portfolio-item:nth-child(11) .item-title {
+        margin-top: -5%;
+    }
+
+    .how-might-we-text {
+        padding: 0;
+        margin-top: 0;
+    }
+
+    .cg-statement {
+        padding: 16px 0 48px;
+    }
+
+    main:has(+ div > .section-title) .cg-statement {
+        padding-bottom: 0;
+        margin-bottom: -28px;
+    }
+
+    .full-width-mobile {
+        width: 100% !important;
+    }
+
+    .video-section-full {
+        width: 100% !important;
+        margin-left: 0 !important;
+    }
+
+    .cg-row {
+        display: block;
+    }
+
+    .cg-col + .cg-col {
+        margin-top: 24px;
+    }
+
+    .cg-row:has(> .cg-col > .section-title):has(> .cg-col + .cg-col) > .cg-col:first-child + .cg-col {
+        margin-top: 40px;
+    }
+
+    .cg-row:has(> .cg-col > .section-title):has(> .cg-col + .cg-col > .section-description) > .cg-col:first-child + .cg-col {
+        margin-top: 44px;
+    }
+
+    main:has(.cg-statement) + .cg-row:not(:has(img)) {
+        margin-top: -8px;
+    }
 }
