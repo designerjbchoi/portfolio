@@ -44,4 +44,15 @@ document.addEventListener('DOMContentLoaded', () => {
         api.src = 'https://www.youtube.com/iframe_api';
         document.head.append(api);
     }
+
+    const vimeoVideos = document.querySelectorAll('iframe.vimeo-rewind');
+    if (vimeoVideos.length) {
+        const api = document.createElement('script');
+        api.src = 'https://player.vimeo.com/api/player.js';
+        api.onload = () => vimeoVideos.forEach(frame => {
+            const player = new Vimeo.Player(frame);
+            player.on('ended', () => player.unload());
+        });
+        document.head.append(api);
+    }
 });
