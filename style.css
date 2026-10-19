@@ -553,7 +553,11 @@ ul.section-description {
     padding-left: 18px;
 }
 
-ul.section-description li + li {
+ol.section-description {
+    padding-left: 24px;
+}
+
+:is(ul, ol).section-description li + li {
     margin-top: 12px;
 }
 
@@ -562,6 +566,12 @@ ul.section-description li + li {
     font-size: 16px;
     font-weight: 500;
     margin-bottom: 16px;
+}
+
+.text-group-title.large {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 12px;
 }
 
 .text-columns + .text-group-title {
@@ -580,6 +590,14 @@ ul.section-description li + li {
 
 .text-columns > .section-description {
     margin-top: 0 !important;
+}
+
+.text-inset {
+    margin-inline: calc(72px - var(--page-pad));
+}
+
+.desc-title.large {
+    font-size: 15px;
 }
 
 div:has(> .section-title) + :is(.cg-row, main, .image-stack, .grid-7-3):has(img, iframe, .cg-caption, .video-wrapper, .text-group-title),
@@ -873,6 +891,10 @@ img.img-trim-y {
     .text-columns.cols-3 {
         grid-template-columns: 1fr;
         gap: 24px;
+    }
+
+    .text-inset {
+        margin-inline: calc(12px - var(--page-pad));
     }
 
     .cg-col + .cg-col {
