@@ -269,6 +269,10 @@ body.page-nmm {
     overflow: hidden;
 }
 
+.cg-col:has(> .video-wrapper) {
+    grid-column: 1 / -1;
+}
+
 .video-iframe {
     position: absolute;
     inset: 0;
@@ -497,6 +501,10 @@ main:has(+ div > .section-title) .cg-statement {
     margin-top: 84px;
 }
 
+.cg-row:has(.video-wrapper) + .cg-row:has(.video-wrapper) {
+    margin-top: 144px;
+}
+
 .cg-row:has(img.text-image) + .cg-row:has(img) {
     margin-top: 60px;
 }
@@ -508,6 +516,20 @@ main:has(+ div > .section-title) .cg-statement {
     line-height: 1.6;
     text-align: center;
     margin-bottom: 20px;
+}
+
+.video-caption {
+    font-family: var(--mono);
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    margin-top: 26px;
+    padding-bottom: 2px;
+}
+
+.video-caption b {
+    font-size: 18px;
+    line-height: 33px;
 }
 
 .section-description .desc-title {
