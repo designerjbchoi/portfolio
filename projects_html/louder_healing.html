@@ -95,6 +95,51 @@
         </div>
     </div>
 
+    <div>
+        <h1 class="section-title mt-140 mb-16">
+            Prototype Hardware &amp; Installation Setup</h1>
+    </div>
+
+    <div class="cg-row">
+        <div class="cg-col" style="grid-column: 1 / span 4;">
+            <img src="../image/Louder_Healing/louder_healing_06_projection_space.jpg" alt="Louder Healing Projection Space" width="1725" height="2000" loading="lazy">
+        </div>
+        <div class="cg-col" style="grid-column: 5 / span 4;">
+            <img src="../image/Louder_Healing/louder_healing_07_projector_setup.jpg" alt="Louder Healing Projector Setup" width="1920" height="1440" loading="lazy">
+        </div>
+        <div class="cg-col" style="grid-column: 9 / span 4;">
+            <img src="../image/Louder_Healing/louder_healing_08_audio_output.jpg" alt="Louder Healing Audio Output" width="1920" height="1440" loading="lazy">
+        </div>
+    </div>
+
+    <div>
+        <h1 class="section-title mt-140 mb-16">
+            Technical Architecture &amp; Implementation</h1>
+    </div>
+
+    <div class="cg-row">
+        <div class="cg-col text-wide wider" style="grid-column: 3 / span 8;">
+            <h2 class="text-group-title">Software &amp; Generative Pipeline</h2>
+            <div class="text-columns">
+                <p class="section-description"><b class="desc-title">Real-Time Audio Analysis (CHOP)</b>To create responsive motion, the system captures environmental sound and playback via the built-in microphone. The acoustic stream is routed through Audio Device, Math, Analyze, and Lag CHOPs, extracting volume, tempo, and transient beat hits while smoothing data transitions to avoid erratic spikes.</p>
+                <p class="section-description"><b class="desc-title">Procedural Flora &amp; Botanical Modeling (POP)</b>Flower anatomy and organic geometry are generated procedurally using TouchDesigner’s POP network (Pattern, Skin, Twist, Circle, Copy, and Normal). This procedural approach allows the petals and stems to deform organically based on the incoming sound data.</p>
+                <p class="section-description"><b class="desc-title">Grass Dynamics &amp; Field Distribution (CHOP + POP X)</b>Grass motion uses a hybrid system where animation rates and sway speeds are driven by CHOP channels (Speed, Noise). To manage complex scattering across the canvas, the setup employs POP X (Instancer, Randomize, Texture Falloff, and Remap Falloff), achieving dense instancing with varied orientations without dropping frame rates.</p>
+                <p class="section-description"><b class="desc-title">Post-Processing &amp; Visual Fidelity (TOP)</b>The final visual output runs through a real-time TOP pipeline to achieve depth and atmospheric polish, using Render, Bloom, Luma Blur, and OpenColorIO color calibration to translate raw geometry into a cinematic visual landscape.</p>
+            </div>
+            <h2 class="text-group-title">Hardware &amp; Physical Setup</h2>
+            <div class="text-columns cols-3">
+                <p class="section-description"><b class="desc-title">Processing Unit</b>16-inch MacBook Pro (M5 Max) driving simultaneous real-time GPU rendering and audio analysis.</p>
+                <p class="section-description"><b class="desc-title">Acoustic Input &amp; Output</b>Built-in microphone array acting as the real-time sensor, paired with a JBL SoundBar 2.0 MK2 for balanced spatial audio playback.</p>
+                <p class="section-description"><b class="desc-title">Spatial Projection</b>Samsung The Freestyle (2nd Gen) mapping dynamic generative botany onto the physical wall surface to create an immersive environment.</p>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <h1 class="section-title mt-100 mb-16">
+            Final Wall Projection Showcase</h1>
+    </div>
+
     <main class="project-detail">
         <section class="other-projects-section">
             <h2 class="section-label text-center mb-60">OTHER PROJECTS</h2>
