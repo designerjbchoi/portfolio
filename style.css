@@ -502,7 +502,7 @@ main:has(+ div > .section-title) .cg-statement {
 }
 
 .cg-row:has(.video-wrapper) + .cg-row:has(.video-wrapper) {
-    margin-top: 144px;
+    margin-top: 152px;
 }
 
 .cg-row:has(img.text-image) + .cg-row:has(img) {
