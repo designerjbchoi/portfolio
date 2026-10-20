@@ -45,6 +45,49 @@ document.addEventListener('DOMContentLoaded', () => {
         document.head.append(api);
     }
 
+    document.querySelectorAll('.audio-player').forEach(box => {
+        const audio = new Audio(box.dataset.src);
+        const button = document.createElement('button');
+        button.setAttribute('aria-label', 'Play');
+        const bar = document.createElement('input');
+        bar.type = 'range';
+        bar.min = 0;
+        bar.max = 1000;
+        bar.value = 0;
+        bar.setAttribute('aria-label', 'Seek');
+        const time = document.createElement('span');
+        time.className = 'audio-time';
+        box.append(button, bar, time);
+
+        const format = seconds => `${Math.floor(seconds / 60)}:${String(Math.floor(seconds % 60)).padStart(2, '0')}`;
+
+        const sync = () => {
+            const ratio = audio.duration ? audio.currentTime / audio.duration : 0;
+            bar.value = ratio * 1000;
+            bar.style.setProperty('--progress', `${ratio * 100}%`);
+            time.textContent = `${format(audio.currentTime)} / ${format(audio.duration || 0)}`;
+        };
+        const setPlaying = playing => {
+            box.classList.toggle('playing', playing);
+            button.setAttribute('aria-label', playing ? 'Pause' : 'Play');
+        };
+
+        button.addEventListener('click', () => (audio.paused ? audio.play() : audio.pause()));
+        bar.addEventListener('input', () => {
+            if (audio.duration) audio.currentTime = (bar.value / 1000) * audio.duration;
+            sync();
+        });
+        audio.addEventListener('timeupdate', sync);
+        audio.addEventListener('loadedmetadata', sync);
+        audio.addEventListener('play', () => setPlaying(true));
+        audio.addEventListener('pause', () => setPlaying(false));
+        audio.addEventListener('ended', () => {
+            audio.currentTime = 0;
+            sync();
+        });
+        sync();
+    });
+
     const vimeoVideos = document.querySelectorAll('iframe.vimeo-rewind');
     if (vimeoVideos.length) {
         const api = document.createElement('script');
