@@ -364,6 +364,33 @@
         </div>
     </div>
 
+    <div class="cg-row" style="margin-top: 148px;">
+        <div class="cg-col" style="grid-column: 1 / -1;">
+            <h2 class="text-group-title large" style="margin-bottom: 32px;">Post-Testing Reflections &amp; Final Refinements</h2>
+            <div class="text-columns hero-width">
+                <div>
+                    <p class="section-description"><b class="desc-title large" style="margin-bottom: 4px;">What Worked Well</b>The real-time audio-reactive visuals performed effectively in evoking positive emotional responses. Participants described the organic floral motion as “hypnotic” and responded strongly to the rendering quality, especially the aesthetic contrast created by the variable depth of field. These reactions validated that a music-driven digital botanical ecosystem can offer an engaging, comforting escape for people living in dense urban settings.</p>
+                    <p class="section-description"><b class="desc-title large" style="margin-bottom: 4px;">Areas for Refinement</b>Testing revealed several mechanical and visual areas requiring tuning:</p>
+                    <ul class="section-description">
+                        <li><b>Motion Continuity:</b> Sudden tempo shifts caused the animation transitions to feel slightly jerky rather than fluid.</li>
+                        <li><b>Ambient Behavior:</b> During silent intervals, the default idle floating motion felt too rigid and harsh.</li>
+                        <li><b>Visual Longevity:</b> The overall floral distribution patterns tended to feel repetitive over extended viewing sessions.</li>
+                        <li><b>Frequency Mapping:</b> While the CHOP network captured melody and basslines accurately, it overlooked faster drum and percussion transients.</li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="section-description"><b class="desc-title large" style="margin-bottom: 4px;">Iterations Implemented in the Final Build</b>To resolve these friction points and finalize the installation, three core technical refinements were implemented in TouchDesigner:</p>
+                    <ol class="section-description">
+                        <li><b>Interpolation Smoothing:</b> Recalibrated the Lag and Math CHOP parameters across tempo shifts, successfully eliminating abrupt jumps and establishing continuous, fluid motion.</li>
+                        <li><b>Procedural Variety &amp; Softened Idle State:</b> Expanded the procedural layout logic to generate greater botanical diversity over time, while introducing gentler easing curves to create a calm, subtle breathing motion during silent intervals.</li>
+                        <li><b>Multi-Band Audio Separation:</b> Rebuilt the audio analysis pipeline to isolate high-frequency percussion from melodic channels, allowing distinct drum transients to drive dedicated micro-interactions with precise sonic responsiveness.</li>
+                    </ol>
+                    <p class="section-description"><b class="desc-title large" style="margin-bottom: 4px;">Core Takeaways on the Research Question</b>The testing sessions provided direct empirical validation for the central hypothesis: music-reactive procedural flora can instantly trigger positive emotional states and deep engagement. Furthermore, the feedback underscored that emotional immersion relies heavily on interaction fidelity. Because abrupt movements, rigid idle states, or visual repetition disrupted the experience, implementing seamless beat interpolation and nuanced audio separation in the final build proved essential to sustaining a deeply comforting, unbroken state of healing.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <main class="project-detail">
         <section class="other-projects-section">
             <h2 class="section-label text-center mb-60">OTHER PROJECTS</h2>
